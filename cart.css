@@ -1,0 +1,239 @@
+section {
+    height: auto;
+    width: 100%;
+
+}
+
+.section-cart-gol {
+    display: none;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    /* display flex trebe aici */
+}
+
+.section-cart-plin {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+
+.header-section-cart-plin {
+    width: 90%;
+    margin: 1em auto;
+}
+
+.main-div-cart-plin {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.produse-cart-plata {
+
+    width: 63%;
+    height: auto;
+    border-radius: .5em;
+    padding: 1em;
+    background-color: #ffffff;
+    box-shadow: 0px 1px 10px 10px rgba(0, 0, 0, 0.1);
+}
+
+.header-produse-cart {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    border-bottom: 1px solid #e8e8e8;
+    padding-bottom: .5em;
+}
+
+.header-produse-cart h4 {
+    margin: 0 .3em;
+}
+
+.produsele-cosul-tau {
+    width: 100%;
+    margin-top: .5em;
+}
+
+.data-livrare {
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.data-livrare div {
+    background-color: #e8e8e8;
+    padding: .5em;
+    border-radius: 1em;
+}
+
+.produsele-din-cart {
+    display: flex;
+    position: relative;
+    width: 100%;
+    padding: .7em;
+    justify-content: space-between;
+}
+
+.produsele-din-cart img {
+    width: 8em;
+}
+
+.div-left {
+    display: flex;
+
+}
+
+.afisarea-produsului {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: .8em;
+}
+
+.produs-cart-plata {
+    display: block;
+}
+
+.cantitate-produs-cart-plata {
+    display: flex;
+}
+
+.sterge-produs-cart-plata {
+    display: flex;
+    position: relative;
+    justify-content: center;
+}
+
+.sterge-produs-cart-plata button {
+    background: none;
+    border: none;
+    padding: 0 1em;
+    color: #2b2b2b;
+    cursor: pointer;
+}
+
+.div-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 10%;
+    align-items: center;
+}
+
+.div-right img {
+    width: 1.5em;
+    height: 1.5em;
+    cursor: pointer;
+}
+
+.div-right .cantitate-produs-cart-plata {
+    /* border: 1px solid black; */
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.div-right .cantitate-produs-cart-plata h2 {
+    margin: 0 .5em;
+}
+
+.div-right .pret-produs-cart-plata {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.div-right .pret-initial-produs {
+    opacity: 0;
+    display: flex;
+    font-size: .8em;
+}
+
+.pret-produs-per-cantitate {
+    display: flex;
+}
+
+.finalizeaza-comanda {
+    height: auto;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    width: 33%;
+}
+
+
+
+.finalizeaza-comanda .subtotal-total {
+    display: block;
+    height: auto;
+    border-radius: .5em;
+    padding: 1em;
+    background-color: #ffffff;
+    box-shadow: 0px 1px 10px 10px rgba(0, 0, 0, 0.1);
+}
+
+.finalizeaza-comanda .vouchere {
+    display: flex;
+    border-radius: .5em;
+    padding: .7em;
+    background-color: #ffffff;
+    box-shadow: 0px 1px 10px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 2em;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: .9em;
+}
+
+.finalizeaza-comanda .vouchere img {
+    width: 1.5em;
+}
+
+.finalizeaza-comanda .subtotal-total ul {
+    display: block;
+}
+
+.subtotal-total li {
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+}
+
+.subtotal-total li div {
+    display: flex;
+}
+
+.subtotal-total-button {
+    width: 100%;
+    display: flex;
+    margin: 0 auto;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+
+.subtotal-total-button button {
+    background-color: #2b2b2b;
+    color: #fff;
+    padding: .5em 3em;
+    cursor: pointer;
+}
+
+.subtotal-total .logo-modalitati-plata {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 1em;
+    border-top: 1px solid #e8e8e8;
+}
+
+.subtotal-total .logo-modalitati-plata img {
+    width: 3em;
+}

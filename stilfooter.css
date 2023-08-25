@@ -1,0 +1,273 @@
+footer {
+    display: block;
+    width: 100vw;
+    height: 100vh;
+}
+
+footer .retur {
+    display: flex;
+    width: 100vw;
+    border: 2px solid black;
+    justify-content: space-evenly;
+    padding: 1em;
+    background-color: #2b2b2b;
+    color: #fff;
+    height: 9vh;
+}
+
+footer .retur div {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+
+footer .retur div a {
+    text-decoration: none;
+    color: white;
+    display: flex;
+}
+
+footer .retur div .descriere {
+    margin-left: 1em;
+}
+
+footer .retur .icon img {
+    width: 3em;
+    height: 3em;
+}
+
+footer .pay-icon {
+    height: 8vh;
+    width: 100%;
+    background-color: #e8e8e8;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    z-index: 1;
+}
+
+footer .pay-icon div img {
+    width: 3em;
+    height: 3em;
+}
+
+footer .newsletter {
+    margin: auto;
+    height: 40vh;
+    width: 70vw;
+
+    display: grid;
+
+    justify-content: center;
+    align-items: center;
+}
+
+footer .newsletter div {
+
+    text-align: center;
+}
+
+footer .newsletter div:nth-child(2) {
+
+    margin: auto;
+}
+
+footer .newsletter form {
+    display: grid;
+
+}
+
+footer .newsletter form .checkbox {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    margin: 1em;
+}
+
+footer .newsletter form .checkbox div {
+    margin: 0 1em;
+    cursor: pointer;
+}
+
+footer input[type="radio"] {
+    appearance: none;
+    background-color: #fff;
+    border-radius: 50%;
+    width: 1.2em;
+    height: 1.2em;
+    outline: 2px solid #2b2b2b;
+    box-shadow: inset 0 0 2px 2px #fff;
+
+}
+
+footer label {
+    font-size: 1.2em;
+}
+
+footer .checkbox input[type="radio"],
+.checkbox label {
+    cursor: pointer;
+    color: #bababa;
+}
+
+footer .checkbox input[type="radio"],
+.checkbox label:hover {
+    color: #2b2b2b;
+}
+
+footer input[type="radio"]:checked {
+
+    background-color: #2b2b2b;
+    animation: outline-checked;
+    animation-duration: 0.1s;
+    animation-iteration-count: 4;
+    animation-direction: alternate;
+    animation-timing-function: linear;
+
+}
+
+@keyframes outline-checked {
+    0% {
+        outline-offset: 0;
+    }
+
+    100% {
+        outline-offset: -0.2rem;
+    }
+}
+
+footer .newsletter .email {
+    width: auto;
+    height: 5vh;
+    position: relative;
+}
+
+footer input[type=email] {
+    position: relative;
+    border: none;
+    width: 60vh;
+    height: 4.5vh;
+    background-color: #e8e8e8;
+    border-radius: 12px;
+    cursor: text;
+}
+
+footer input[type=email]:hover {
+    border: 1px solid #2b2b2b;
+}
+
+footer .newsletter .email label {
+    position: absolute;
+    left: 2%;
+    top: 19%;
+    opacity: .7;
+    transition: 150ms ease-in-out;
+}
+
+footer .newsletter .email .clicked {
+    position: absolute;
+    top: -25%;
+    left: 4%;
+    opacity: 1;
+    font-size: 0.9em;
+    padding: 0 .5em;
+}
+
+footer .newsletter .email .label {
+    background-color: #fff;
+}
+
+footer .newsletter .email .border {
+    border: 1px solid #2b2b2b;
+}
+
+footer .newsletter form div:nth-child(3) button {
+    background-color: #2b2b2b;
+    color: #fff;
+    padding: 1em 1.9em;
+    font-size: 1em;
+    margin-top: 1em;
+    cursor: pointer;
+    box-shadow: 2px 1px 17px 0px rgba(0, 0, 0, .9);
+}
+
+footer .newsletter div:nth-child(3) {
+    color: #bababa;
+}
+
+footer .contact-section {
+    display: block;
+    width: 70vw;
+    margin: 1em auto;
+}
+
+footer .contact-section .contact-section-first-div {
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    height: 25vh;
+}
+
+footer .contact-section .footer-main-div {
+    display: block;
+}
+
+footer .contact-section .footer-icon {
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    margin: .5em auto;
+
+}
+
+footer .contact-section .footer-logo img {
+    width: 15em;
+    height: 10em;
+    cursor: pointer;
+}
+
+footer .contact-section .footer-icon img {
+    width: 1.5em;
+    height: 1.5em;
+    cursor: pointer;
+}
+
+footer .contact-section .relatii-clienti {
+    display: grid;
+    grid-template-rows: repeat(auto-fill, 1fr);
+}
+
+footer .contact-section .relatii-clienti p:hover {
+    cursor: pointer;
+}
+
+footer .contact-section .note {
+    color: #bababa;
+    margin: 1em 0;
+}
+
+footer .About {
+    height: 10vh;
+    width: 100%;
+    background-color: #e8e8e8;
+    display: grid;
+    place-items: center;
+
+}
+
+footer .About div:nth-child(1) {
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    width: 75vw;
+    margin: 0 auto;
+}
+
+footer .About div:nth-child(2) {
+    display: flex;
+}
+
+footer .About div:nth-child(2) p {
+    font-size: 1.4em;
+}

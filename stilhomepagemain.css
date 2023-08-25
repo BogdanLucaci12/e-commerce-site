@@ -1,0 +1,251 @@
+main {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 80vh;
+    z-index: 0;
+}
+section {
+    height: auto;
+    z-index: 0;
+    margin: .5em auto;
+    height: 90vh;
+}
+#cover-container {
+    width: 100vw;
+    height: 67vh;
+   
+}
+
+#cover-container .sagetifirstsection {
+    font-size: 7em;
+    cursor: pointer;
+    position: absolute;
+    top: 40%;
+    transform: translateY(-40%);
+    color: #2b2b2b;
+    z-index: 1;
+}
+
+#cover-container .sagetifirstsection:hover {
+    color: #d1d1d1;
+
+}
+
+.left {
+    left: 10%;
+}
+
+.right {
+    right: 10%;
+}
+
+:root {
+    --slider-image: 0;
+    --slider-translate: -70vw;
+}
+
+#scroll-container {
+
+    width: 100%;
+    height: 70vh;
+    display: flex;
+    position: relative;
+    justify-content: left;
+    align-items: center;
+    margin: 0 15%;
+    transition: transform 250ms ease-in-out;
+    transform: translateX(calc(var(--slider-translate) * var(--slider-image)));
+    z-index: 0;
+}
+
+.custom-banner {
+    opacity: .3;
+    margin: 0 auto;
+    transition: opacity 250ms ease-in-out;
+}
+
+.active {
+    opacity: 1;
+
+}
+
+.custom-banner img {
+    width: 70vw;
+    height: 60vh;
+
+}
+
+#cover-container ul {
+    position: absolute;
+    display: flex;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 77%;
+}
+
+#cover-container ul li {
+    margin: .3em;
+    height: 1em;
+    width: 1em;
+    background-color: #474747;
+    border: 1px solid #2b2b2b;
+    border-radius: 50%;
+    list-style: none;
+    cursor: pointer;
+    transition: 250ms ease-in-out;
+}
+
+.li-target {
+    background-color: #fff !important;
+    
+}
+
+.logo-container {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 70vw;
+    margin: 0 auto;
+    position: relative;
+    
+    height: 20vh;
+}
+.logo-container::before{
+    position: absolute;
+    z-index: 1;
+    content: "";
+    width: 8vw;
+    height: 20vh;
+    background: linear-gradient(to left, rgba(255, 255, 255, 0), white)
+}
+.logo-container::after{
+    position: absolute;
+    right: 0;
+        z-index: 1;
+        content: "";
+        width: 8vw;
+        height: 20vh;
+        background: linear-gradient(to right, rgba(255, 255, 255, 0), white)
+}
+.logo-slides {
+    animation: 25s slider infinite linear;
+    display: inline-block;
+    margin: 1em 0;
+    height: 25vh;
+   
+}
+
+.logo-container:hover .logo-slides {
+    animation-play-state: paused;
+
+}
+
+.logo-slides a {
+    margin: 0 .4em;
+    flex: 0 0 20%;
+    
+
+}
+.logo-slides a img {
+    width: 14em;
+    height: 8em;
+    transition: transform 150ms ease-in-out;
+}
+.logo-slides a img:hover{
+transform: scale(1.2);
+}
+@keyframes slider {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+main section:nth-child(2){
+    display: block;
+    width: 70vw;
+    margin: 0 auto;
+    height: 100vh;
+}
+.diverse ul{
+    display: flex;
+}
+.diverse ul li{
+    list-style: none;
+    font-size: 1em;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    margin: .5em auto;
+    border:.2em solid #2b2b2b;
+    padding: .3em;
+    border-radius: 15px;
+    cursor: pointer;
+    background-color: #fff;
+    flex-wrap: wrap;
+   transition: 250ms ease-in-out;
+}
+.diverse ul li:hover{
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 0%, rgba(0, 0, 0, 0.15) 100%), radial-gradient(at top center, rgba(255, 255, 255, 0.40) 0%, rgba(0, 0, 0, 0.40) 120%) #989898;
+}
+.diverse ul li img{
+    width: 4em;
+    height: 4em;
+}
+.diverse ul li h3{
+    margin-left: 1vw;
+}
+.boots{
+display: grid;
+    place-items: center;
+}
+.boots div{
+    position: relative;
+ 
+}
+.boots .first-image img{
+   width: 70vw;
+    height: 35vh;
+}
+.boots .second-image img{
+    width:70vw;
+    height: 53vh;
+}
+
+.boots .descriere{
+    
+    position: absolute;
+    top: 40%;
+    transform: translateX(-40%);
+    left: 20%;
+    z-index: 1;
+    color: #fff;
+    width: 25vw;
+    height: 20vh;
+}
+.boots .descriere p:nth-child(1){
+    font-size: 3em;
+    margin-bottom: 1vh;
+}
+.boots .descriere p:nth-child(2) {
+    font-size: 1.2em;
+}
+.boots .descriere p:nth-child(3){
+    margin:2em auto;
+}
+.boots .descriere a{
+    color: #fff;
+    text-decoration: none;
+    border: 1px solid #fff;
+    padding: .9em;
+   transition: background-color 250ms ease-in;
+}
+.boots .descriere a:hover{
+    background-color: #fff;
+    border: none;
+    color: #2b2b2b;
+}

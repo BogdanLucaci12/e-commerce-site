@@ -1,0 +1,636 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+
+    color: #2b2b2b;
+}
+
+body {
+    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Dosis', sans-serif;
+    font-family: 'Montserrat', sans-serif;
+    z-index: 0;
+    position: relative;
+    overflow-x: hidden;
+}
+
+main {
+    display: block;
+    z-index: initial;
+    transition: 150ms transform ease-in-out;
+}
+
+header {
+    position: relative;
+    width: 100%;
+    height: 5em;
+    box-shadow: .3em .3em .3em rgba(0, 0, 0, .3);
+    transition: 150ms transform ease-in-out;
+    transform: translateX(0);
+    z-index: 10;
+
+}
+
+nav {
+    width: 100%;
+    display: flex;
+    position: relative;
+    align-items: center;
+    flex-direction: row;
+    height: 5em;
+    z-index: 10;
+}
+
+nav i {
+    font-size: 1.7em;
+}
+
+nav i p {
+    font-size: .1em;
+}
+
+nav .butonmeniu {
+    height: 5em;
+    background-color: white;
+    border: none;
+    margin: 0;
+    padding: .5em;
+    cursor: pointer;
+    border-radius: 1em;
+    z-index: 5;
+}
+
+nav .logo {
+    margin: auto .4em;
+}
+
+.search-bar {
+    width: 50%;
+    position: relative;
+}
+
+.search-bar input {
+    width: 80%;
+    margin: auto;
+    height: 4em;
+    border: 2px solid #2b2b2b;
+    border-radius: 20px;
+    padding: 1em;
+}
+
+.search-bar button {
+    background-color: none;
+    border: 2px solid #bababa;
+    padding: 1em;
+    border-radius: 50%;
+}
+
+.result-bar {
+    position: absolute;
+    width: 80%;
+    height: auto;
+    background-color: #fff;
+    box-shadow: 3px 12px 15px 12px rgba(0, 0, 0, .1);
+    border-radius: 1em;
+    padding: 1em;
+    display: none;
+}
+
+.container-afisare-result {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(10vw, 1fr));
+    font-size: .8em;
+    gap: 1em;
+}
+
+.titlu-result-bar {
+    margin-bottom: .5em;
+}
+
+.rezultat {
+    display: flex;
+    cursor: pointer;
+}
+
+.result-descriere {
+    display: grid;
+}
+
+.result-bar img {
+    max-width: 6vw;
+}
+
+.rezultat .pret {
+    display: flex;
+}
+
+.rezultat .pret p {
+    margin-left: .2em;
+}
+
+.itemsnavbar {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    z-index: 10;
+}
+
+.itemsnavbar div {
+    margin: auto 1em;
+    padding: .60em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: 150ms ease-in-out;
+}
+
+
+
+.itemsnavbar div p {
+    margin-top: .4em;
+}
+
+.count-favs {
+    position: absolute;
+    font-size: 1.2em;
+    top: -3%;
+    transform: translateX(150%);
+    background-color: #e8e8e8;
+    color: #2b2b2b;
+    padding: .3em;
+    border-radius: 40%;
+    z-index: 25;
+}
+
+nav .cart {
+    height: 5em;
+    background-color: #e8e8e8;
+    width: 7%;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.count-cart {
+    position: absolute;
+    font-size: 1.2em;
+    top: 10%;
+    transform: translateX(150%);
+    background-color: #fff;
+    color: #2b2b2b;
+    padding: .3em;
+    border-radius: 40%;
+    z-index: 25;
+}
+
+.dropdownmenu-info {
+    position: absolute;
+    height: 25em;
+    width: 25em;
+    background-color: white;
+    box-shadow: .1em .6em .5em .8em rgba(0, 0, 0, .1);
+    top: 6.8em;
+    display: none;
+    right: 22.3vw;
+    z-index: 10;
+
+}
+
+.dropdownmenu-info::before {
+    position: absolute;
+    left: 50%;
+    top: -2em;
+    width: 3em;
+    height: 3em;
+    background-image: url('icon/triangle-svgrepo-com-bababa.png');
+    background-size: cover;
+    content: '';
+    z-index: 10;
+}
+
+.dropdownmenu-info::after {
+    position: absolute;
+    background-color: #2b2b2b;
+    content: '';
+    width: 100%;
+    height: 5em;
+    top: -2em;
+    opacity: 0;
+    right: 0em;
+    z-index: 10;
+
+}
+
+.dropdownmenu-info .first-div {
+    border-top: 2px solid rgba(186, 186, 186, .4);
+    display: inline-flex;
+    position: relative;
+    justify-content: flex-start;
+    flex-direction: row;
+    align-items: center;
+    padding: .4em;
+    margin: 0;
+    width: 100%;
+    height: 18%;
+}
+
+.dropdownmenu-info .help {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    height: 3em;
+    background-color: #bababa;
+}
+
+.dropdownmenu-info .first-div div {
+    margin-left: 1em;
+}
+
+.dropdownmenu-myaccount {
+    position: absolute;
+    height: 30em;
+    width: 25em;
+    background-color: white;
+    box-shadow: .1em .6em .5em .8em rgba(0, 0, 0, .1);
+    top: 5em;
+    display: none;
+    right: 10.6em;
+    text-align: center;
+}
+
+.dropdownmenu-myaccount div {
+    margin: .85em 0;
+}
+
+.dropdownmenu-myaccount div a {
+    text-decoration: none;
+    color: #e8e8e8;
+    background-color: #bababa;
+    padding: .6em;
+    border-radius: 15px;
+    box-shadow: .1em .1em .4em .4em rgba(186, 186, 186, .4);
+    font-size: 1.5em;
+}
+
+.dropdownmenu-myaccount div a:hover {
+    background-color: #2b2b2b;
+    color: #bababa;
+    text-decoration: underline;
+}
+
+.dropdownmenu-cart {
+    position: absolute;
+
+    height: auto;
+    max-height: 60vh;
+    width: 21vw;
+    background-color: white;
+    box-shadow: .1em .6em .5em .8em rgba(0, 0, 0, .1);
+    top: 7em;
+    display: none;
+    flex-direction: column;
+    right: .3em;
+    text-align: center;
+    border-radius: 15px;
+    z-index: 10000;
+}
+
+.dropdownmenu-cart::before {
+    position: absolute;
+    left: 85%;
+    top: -2em;
+    width: 3em;
+    height: 3em;
+    background-image: url('icon/triangle-svgrepo-com.png');
+    background-size: cover;
+    content: '';
+    z-index: 10;
+}
+
+.dropdownmenu-cart::after {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 5em;
+    top: -2em;
+    opacity: 0;
+    z-index: 10;
+}
+
+
+.dropdownmenu-cart .titlu-cart {
+    background-color: #2b2b2b;
+    color: #fff;
+    height: 4vh;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+
+.meniupreview {
+    width: 100%;
+    height: 90%;
+    position: fixed;
+    display: none;
+
+}
+
+.meniuprincipal {
+    position: absolute;
+    top: 0;
+    height: 100vh;
+    width: 20vw;
+    background-color: #2b2b2b;
+    transform: translateX(0);
+    z-index: 1;
+    display: block;
+    color: #fff
+}
+
+.meniuprincipal div {
+    padding: 1em;
+    cursor: pointer;
+    margin: 2em 0;
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.meniuprincipal div:first-child {
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 0%, rgba(0, 0, 0, 0.15) 100%), radial-gradient(at top center, rgba(255, 255, 255, 0.40) 0%, rgba(0, 0, 0, 0.40) 120%) #989898;
+
+}
+
+.meniuprincipal div:hover {
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 0%, rgba(0, 0, 0, 0.15) 100%), radial-gradient(at top center, rgba(255, 255, 255, 0.40) 0%, rgba(0, 0, 0, 0.40) 120%) #989898;
+}
+
+.meniuprincipal div img {
+    width: 2em;
+}
+
+.meniutoatesporturile {
+    z-index: 10;
+    position: absolute;
+    top: 0;
+    height: 100vh;
+    width: 20vw;
+    background-color: #e8e8e8;
+    z-index: 2;
+    display: block;
+    transform: translateX(-20vw);
+    transition: transform 150ms ease-in-out;
+}
+
+.meniutoatesporturile div:first-child {
+    width: 100%;
+    display: flex;
+    position: relative;
+    align-items: center;
+}
+
+.meniutoatesporturile div:first-child h2 {
+    margin-left: 1em;
+}
+
+.meniutoatesporturile div:first-child img {
+    width: 3em;
+    height: 3em;
+    background-color: #ffff;
+    padding: .5em;
+    cursor: pointer;
+}
+
+.meniutoatesporturile div:nth-child(2) {
+    width: 20vw;
+    display: block;
+    position: relative;
+    height: 25vh;
+    text-align: center;
+}
+
+.meniutoatesporturile div:nth-child(2) h3 {
+    margin: 1em;
+}
+
+.meniutoatesporturile img {
+    width: 10em;
+    height: 10em;
+    border-radius: 2em;
+}
+
+.search-bar-meniu-toate-sporturile {
+    width: 100%;
+    display: flex;
+    height: auto;
+    margin-top: 3em;
+}
+
+.search-bar-meniu-toate-sporturile form {
+    display: flex;
+    width: 100%;
+    position: relative;
+    justify-content: center;
+
+}
+
+.search-bar-meniu-toate-sporturile input {
+    width: 90%;
+    height: 3em;
+    background: #fff;
+    border-radius: 2em;
+    padding-left: 3em;
+    border: none;
+    box-shadow: 16px 15px 11px 0px rgba(0, 0, 0, 0.1);
+
+}
+
+.search-bar-meniu-toate-sporturile label {
+    position: absolute;
+    left: 1.5em;
+    top: .2em
+}
+
+.search-bar-meniu-toate-sporturile label img {
+    width: 2em;
+    height: 2em;
+}
+
+.search-bar-meniu-toate-sporturile a {
+    height: 1.24em;
+    font-size: 2em;
+    background-color: #fff;
+    border-right: none;
+    border-radius: 2em;
+}
+
+.meniutoatesporturile .afiseaza-sporturile {
+    width: 18vw;
+    background-color: #fff;
+    box-shadow: 16px 15px 11px 0px rgba(0, 0, 0, 0.1);
+    height: auto;
+    display: block;
+    margin: 2vh auto;
+}
+
+.meniu {
+    position: absolute;
+    top: 0;
+    height: 100vh;
+    width: 20vw;
+    background-color: #e8e8e8;
+    z-index: 2;
+    display: block;
+    transform: translateX(-20vw);
+    transition: transform 150ms ease-in-out;
+}
+
+.titlu {
+
+    font-size: 1em;
+    height: 10vh;
+    display: flex;
+    position: relative;
+    align-items: center;
+    background: linear-gradient(to right, #2b2b2b, #bababa);
+}
+
+.titlu>img {
+    margin-left: .2em;
+    width: 2.5em;
+    height: 2.5em;
+    background-color: #ffff;
+    padding: .5em;
+    cursor: pointer;
+    border-radius: 2em;
+}
+
+.titlu h2 {
+    margin-left: 1em;
+    color: #fff;
+}
+
+.meniu :nth-of-type(n+2) {
+    font-size: 1.4em;
+    margin: 1em auto;
+    padding: .8em;
+    display: flex;
+    width: 19vw;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #2b2b2b;
+    border-bottom: 1px solid #2b2b2b;
+}
+
+.meniu :nth-of-type(n+2):hover {
+    background: linear-gradient(to right, #fff, #e8e8ee);
+    cursor: pointer;
+}
+
+.meniu :nth-child(n+2) img {
+    width: 1em;
+}
+
+.dropdownmenu-cart .cart-plin {
+    width: 100%;
+    height: auto;
+    display: none;
+}
+
+.dropdownmenu-cart .cart-plin .continut-cart {
+    width: 20.3vw;
+    display: flex;
+    margin: .5em;
+    height: 8vh;
+}
+
+.dropdownmenu-cart .descriere-produs-cart {
+    display: grid;
+    width: 100%;
+    position: relative;
+    align-items: center;
+}
+
+.dropdownmenu-cart .descriere-produs-cart div {
+    display: flex;
+}
+
+.dropdownmenu-cart .titlu-produs-cart {
+    display: flex;
+    position: relative;
+    justify-content: start;
+}
+
+.dropdownmenu-cart .pret-produs-cart {
+    display: flex;
+}
+
+.dropdownmenu-cart .cart-plin img {
+    width: 4em;
+    height: 4em;
+}
+
+.dropdownmenu-cart .total {
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+    border-top: .1em solid #bababa;
+    height: 3vh;
+}
+
+.dropdownmenu-cart .total-articole {
+    display: flex;
+    position: relative;
+    gap: .3em;
+
+}
+
+.dropdownmenu-cart .total-pret {
+    display: flex;
+}
+
+.dropdownmenu-cart .cart-plin .button-cart {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    height: 5vh;
+}
+
+.dropdownmenu-cart .cart-plin a {
+    color: #fff;
+    text-decoration: none;
+    background-color: #2b2b2b;
+    padding: .5em 2em;
+}
+
+.dropdownmenu-cart .cart-plin a:hover {
+    background-color: #fff;
+    border: 1px solid #2b2b2b;
+    color: #2b2b2b;
+}
+
+.dropdownmenu-cart .cart-gol {
+    display: grid;
+    place-items: center;
+    gap: 1em;
+}
