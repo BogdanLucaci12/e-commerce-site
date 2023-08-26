@@ -1,6 +1,6 @@
 <?php
 require 'conectare.php';
-
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -112,10 +112,19 @@ require 'conectare.php';
                     <img src="logo.png" alt="" width="80px" height="80px" /></a>
             </div>
             <div class="search-bar">
-                <input type="search" name="" id="search" placeholder="Cauta produsul dorit" />
-                <button type="submit">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
+                <form action="" method="post">
+                    <input type="text" name="search" id="search" placeholder="Cauta produsul dorit" />
+                    <button type="submit">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </form>
+                <div class="result-bar">
+                    <div class="titlu-result-bar">
+                        <h4>Produse</h4>
+                    </div>
+                    <div class="container-afisare-result">
+                    </div>
+                </div>
             </div>
             <div class="itemsnavbar">
                 <div class="ajutor">
@@ -132,7 +141,7 @@ require 'conectare.php';
                     <i class="fa-regular fa-user"></i>
                     <p>Utilizator</p>
                 </div>
-                <div>
+                <div class="favorites">
                     <p class="count-favs">0</p>
                     <i class="fa-regular fa-star favorite"></i>
                     <p>Favorite</p>
@@ -181,6 +190,10 @@ require 'conectare.php';
                     </div>
                 </div>
             </div>
+            <!-- dropdown menu fpr favorites-->
+            <div class="in-development">
+                In development...stay closed :)
+            </div>
             <!-- Meniul dropdown pentru iconita account -->
             <div class="dropdownmenu-myaccount">
                 <div> <img src="icon/user-circle-svgrepo-com.png" alt="" width="70em"></div>
@@ -209,21 +222,6 @@ require 'conectare.php';
                     <div class="adauga-produs-cart">
 
                     </div>
-                    <!-- <div class="continut-cart">
-                    <div class="imagine-produs-cart">
-                        <img src="produse/Nike Tricou.jpg" alt="">
-                    </div>
-                    <div class="descriere-produs-cart">
-                        <div class="titlu-produs-cart">
-                            <p>Jordan</p>
-                        </div>
-                        <div class="culoare-produs-cart">Culoare:<p>Alb</p></div>
-                        <div class="marime-produs-cart">Marime:<p>M</p></div>
-                        <div class="pret-produs-cart">
-                            <p>550 lei</p>
-                        </div>
-                    </div>
-                </div> -->
                     <div class="total">
 
                         <div class="total-articole">
@@ -365,6 +363,9 @@ require 'conectare.php';
                                 <div class="produs-adaugat-cos">
                                     <p>Produsul a fost adaugat in cosul tău</p>
                                 </div>
+                                <div class="produsul-exista">
+                                    <p>Un produs similar exista deja in cos</p>
+                                </div>
                                 <div class="avertisment-lipsa-marime-culoare">
                                     <p class="lipsa-marime">Nu ai selectat mărimea</p>
                                     <p class="lipsa-culoare">Nu ai selectat culoarea</p>
@@ -394,9 +395,9 @@ require 'conectare.php';
                                             <img src="icon/arrow-up-svgrepo-com.png" alt="" class="arrow-up inactiveaza-arrow">
                                         </label>
                                         <ul>
-                                            <?php $marimi = explode(", ", $fetch['size']);
-                                            foreach ($marimi as $marime) {
-                                                echo "<li>" . $marime . "</li>";
+                                            <?php $culori = explode(", ", $fetch['color']);
+                                            foreach ($culori as $culoare) {
+                                                echo "<li>" . $culoare . "</li>";
                                             }
                                             ?>
                                             <!-- <li>Negru</li>
@@ -411,8 +412,8 @@ require 'conectare.php';
                                             <img src="icon/arrow-up-svgrepo-com.png" alt="" class="arrow-up inactiveaza-arrow">
                                         </label>
                                         <ul>
-                                            <?php $culori = explode(", ", $fetch['color']);
-                                            foreach ($culori as $culoare) {
+                                            <?php $marimi = explode(", ", $fetch['size']);
+                                            foreach ($marimi as $marime) {
                                                 echo "<li>" . $marime . "</li>";
                                             }
                                             ?>

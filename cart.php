@@ -1,3 +1,7 @@
+<?php
+// require 'conectare.php';
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,9 +16,7 @@
     <link rel="stylesheet" href="cart.css">
     <link rel="stylesheet" href="produse.css">
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&family=Dosis:wght@200&family=Montserrat:ital@1&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&family=Dosis:wght@200&family=Montserrat:ital@1&display=swap" rel="stylesheet">
 
 </head>
 
@@ -114,10 +116,19 @@
                     <img src="logo.png" alt="" width="80px" height="80px" /></a>
             </div>
             <div class="search-bar">
-                <input type="search" name="" id="" placeholder="Cauta produsul dorit" />
-                <button type="submit">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
+                <form action="" method="post">
+                    <input type="text" name="search" id="search" placeholder="Cauta produsul dorit" />
+                    <button type="submit">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </form>
+                <div class="result-bar">
+                    <div class="titlu-result-bar">
+                        <h4>Produse</h4>
+                    </div>
+                    <div class="container-afisare-result">
+                    </div>
+                </div>
             </div>
             <div class="itemsnavbar">
                 <div class="ajutor">
@@ -265,8 +276,7 @@
                             </div>
                             <div class="produsele-din-cart">
                                 <div class="div-left">
-                                    <div class="imagine-produs-cart-plata"><img src="produse/Nike Jordan Pantofi.jpg"
-                                            alt=""></div>
+                                    <div class="imagine-produs-cart-plata"><img src="produse/Nike Jordan Pantofi.jpg" alt=""></div>
                                     <div class="afisarea-produsului">
                                         <div class="produs-cart-plata">
                                             <div class="titlu-produs-cart-plata">
@@ -281,9 +291,8 @@
                                             <div class="culoare-produs-cart-plata">
                                                 <p>Galben</p>
                                             </div>
-                                            <div class="cantitate-produs-cart-plata">x 
-                                                <p
-                                                    class="sumar-cantitate-produs-cart-plata">1</p>
+                                            <div class="cantitate-produs-cart-plata">x
+                                                <p class="sumar-cantitate-produs-cart-plata">1</p>
                                             </div>
                                         </div>
                                         <div class="sterge-produs-cart-plata"><button>Sterge produsul</button></div>
@@ -291,8 +300,7 @@
                                 </div>
 
                                 <div class="div-right">
-                                    <div class="cantitate-produs-cart-plata"><img class="plus"
-                                            src="icon/plus-square-svgrepo-com.png" alt="">
+                                    <div class="cantitate-produs-cart-plata"><img class="plus" src="icon/plus-square-svgrepo-com.png" alt="">
                                         <h2 class="cantitatea-dorita"></h2>
                                         <img class="minus" src="icon/minus-square-svgrepo-com.png" alt="">
                                     </div>
@@ -310,8 +318,7 @@
                             </div>
                             <div class="produsele-din-cart">
                                 <div class="div-left">
-                                    <div class="imagine-produs-cart-plata"><img src="produse/Nike Jordan Pantofi.jpg"
-                                            alt=""></div>
+                                    <div class="imagine-produs-cart-plata"><img src="produse/Nike Jordan Pantofi.jpg" alt=""></div>
                                     <div class="afisarea-produsului">
                                         <div class="produs-cart-plata">
                                             <div class="titlu-produs-cart-plata">
@@ -326,8 +333,7 @@
                                             <div class="culoare-produs-cart-plata">
                                                 <p>Galben</p>
                                             </div>
-                                            <div class="cantitate-produs-cart-plata">x <p
-                                                    class="sumar-cantitate-produs-cart-plata">1</p>
+                                            <div class="cantitate-produs-cart-plata">x <p class="sumar-cantitate-produs-cart-plata">1</p>
                                             </div>
                                         </div>
                                         <div class="sterge-produs-cart-plata"><button>Sterge produsul</button></div>
@@ -335,8 +341,7 @@
                                 </div>
 
                                 <div class="div-right">
-                                    <div class="cantitate-produs-cart-plata"><img class="plus"
-                                            src="icon/plus-square-svgrepo-com.png" alt="">
+                                    <div class="cantitate-produs-cart-plata"><img class="plus" src="icon/plus-square-svgrepo-com.png" alt="">
                                         <h2 class="cantitatea-dorita"></h2>
                                         <img class="minus" src="icon/minus-square-svgrepo-com.png" alt="">
                                     </div>
@@ -400,123 +405,123 @@
                 </div>
             </div>
         </section>
-    
-    <footer>
-        <div class="retur">
-            <div>
-                <a href="">
-                    <div class="icon"><img src="icon/pay-svgrepo-com.png" alt=""></div>
-                    <div class="descriere">
-                        <p>Plata cash sau ramburs</p>
-                    </div>
-                </a>
-            </div>
-            <div>
-                <a href="">
-                    <div class="icon"><img src="icon/calendar-days-svgrepo-com.png" alt=""></div>
-                    <div class="descriere">
-                        <p>100 zile drept de retur</p>
-                    </div>
-                </a>
-            </div>
-            <div>
-                <a href="">
-                    <div class="icon"><img src="icon/delivery-sales-discount-svgrepo-com.png" alt=""></div>
-                    <div class="descriere">
-                        <p>Livrare si retur gratuite</p>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="pay-icon">
-            <div><img src="icon/visa-svgrepo-com.png" alt=""></div>
-            <div><img src="icon/apple-pay-svgrepo-com.png" alt=""></div>
-            <div><img src="icon/bt.png" alt=""></div>
-            <div><img src="icon/fancurier.png" alt=""></div>
-            <div><img src="icon/google-pay-svgrepo-com.png" alt=""></div>
-            <div><img src="icon/mastercard-3-svgrepo-com.png" alt=""></div>
 
-        </div>
-        <div class="newsletter">
-            <div>
-                <h2>Nu rata noile oferte și promoții</h2>
-                <h4>Abonează-te la newsletter pentru a primii oferte si promoții</h4>
+        <footer>
+            <div class="retur">
+                <div>
+                    <a href="">
+                        <div class="icon"><img src="icon/pay-svgrepo-com.png" alt=""></div>
+                        <div class="descriere">
+                            <p>Plata cash sau ramburs</p>
+                        </div>
+                    </a>
+                </div>
+                <div>
+                    <a href="">
+                        <div class="icon"><img src="icon/calendar-days-svgrepo-com.png" alt=""></div>
+                        <div class="descriere">
+                            <p>100 zile drept de retur</p>
+                        </div>
+                    </a>
+                </div>
+                <div>
+                    <a href="">
+                        <div class="icon"><img src="icon/delivery-sales-discount-svgrepo-com.png" alt=""></div>
+                        <div class="descriere">
+                            <p>Livrare si retur gratuite</p>
+                        </div>
+                    </a>
+                </div>
             </div>
-            <div>
-                <form action="">
-                    <div class="checkbox">
-                        <div>
-                            <label for="femeie"><input type="radio" name="gen" id="femeie" value="femeie">
-                                Pentru Femei</label>
+            <div class="pay-icon">
+                <div><img src="icon/visa-svgrepo-com.png" alt=""></div>
+                <div><img src="icon/apple-pay-svgrepo-com.png" alt=""></div>
+                <div><img src="icon/bt.png" alt=""></div>
+                <div><img src="icon/fancurier.png" alt=""></div>
+                <div><img src="icon/google-pay-svgrepo-com.png" alt=""></div>
+                <div><img src="icon/mastercard-3-svgrepo-com.png" alt=""></div>
+
+            </div>
+            <div class="newsletter">
+                <div>
+                    <h2>Nu rata noile oferte și promoții</h2>
+                    <h4>Abonează-te la newsletter pentru a primii oferte si promoții</h4>
+                </div>
+                <div>
+                    <form action="">
+                        <div class="checkbox">
+                            <div>
+                                <label for="femeie"><input type="radio" name="gen" id="femeie" value="femeie">
+                                    Pentru Femei</label>
+                            </div>
+                            <div>
+                                <label for="barbat"><input type="radio" name="gen" id="barbat" value="barbat">
+                                    Pentru Barbat</label>
+                            </div>
+                        </div>
+                        <div class="email">
+                            <input type="email" name="email" id="email">
+                            <label for="email">Adresa ta de e-mail</label>
                         </div>
                         <div>
-                            <label for="barbat"><input type="radio" name="gen" id="barbat" value="barbat">
-                                Pentru Barbat</label>
+                            <button type="submit" name="submit" id="submit" class=>Abonează-te</button>
+                        </div>
+                    </form>
+                </div>
+                <div>
+                    <p>*Doresc să primesc pe e-mail informații despre vouchere, oferte și ultimele tendințe din modă.
+                    </p>
+                    <p>Te poți dezabona oricând vrei, gratuit.</p>
+                </div>
+            </div>
+            <div class="contact-section">
+                <div class="contact-section-first-div">
+                    <div class="footer-main-div">
+                        <div class="footer-logo"><img src="logo.png" alt="">
+                        </div>
+                        <div class="footer-icon">
+                            <img src="icon/facebook-svgrepo-com.png" alt="">
+                            <img src="icon/instagram-fill-svgrepo-com.png" alt="">
+                            <img src="icon/youtube-168-svgrepo-com.png" alt="">
+                            <img src="icon/twitter-2-svgrepo-com.png" alt="">
                         </div>
                     </div>
-                    <div class="email">
-                        <input type="email" name="email" id="email">
-                        <label for="email">Adresa ta de e-mail</label>
-                    </div>
-                    <div>
-                        <button type="submit" name="submit" id="submit" class=>Abonează-te</button>
-                    </div>
-                </form>
-            </div>
-            <div>
-                <p>*Doresc să primesc pe e-mail informații despre vouchere, oferte și ultimele tendințe din modă.
-                </p>
-                <p>Te poți dezabona oricând vrei, gratuit.</p>
-            </div>
-        </div>
-        <div class="contact-section">
-            <div class="contact-section-first-div">
-                <div class="footer-main-div">
-                    <div class="footer-logo"><img src="logo.png" alt="">
-                    </div>
-                    <div class="footer-icon">
-                        <img src="icon/facebook-svgrepo-com.png" alt="">
-                        <img src="icon/instagram-fill-svgrepo-com.png" alt="">
-                        <img src="icon/youtube-168-svgrepo-com.png" alt="">
-                        <img src="icon/twitter-2-svgrepo-com.png" alt="">
-                    </div>
-                </div>
-                <div class="relatii-clienti">
-                    <h3>RELAȚII CU CLIENȚII</h3>
+                    <div class="relatii-clienti">
+                        <h3>RELAȚII CU CLIENȚII</h3>
 
-                    <p>Zonă de livrare</p>
-                    <p>Ajutor și contact</p>
-                    <p>Protecția consumatorului</p>
+                        <p>Zonă de livrare</p>
+                        <p>Ajutor și contact</p>
+                        <p>Protecția consumatorului</p>
 
+                    </div>
+                    <div class="relatii-clienti">
+                        <h3>CUMPĂRĂTURI SIGURE</h3>
+                        <p>Datele tale sunt în siguranță la noi</p>
+                    </div>
                 </div>
-                <div class="relatii-clienti">
-                    <h3>CUMPĂRĂTURI SIGURE</h3>
-                    <p>Datele tale sunt în siguranță la noi</p>
+                <div class="note">
+                    <p>*Livrare gratuită pentru comenzile de peste 99,90 lei, în caz contrar livrarea costă 9,90 lei.
+                    </p>
+                    <p>**Toate prețurile includ TVA.</p>
                 </div>
             </div>
-            <div class="note">
-                <p>*Livrare gratuită pentru comenzile de peste 99,90 lei, în caz contrar livrarea costă 9,90 lei.
-                </p>
-                <p>**Toate prețurile includ TVA.</p>
+            <div class="About">
+                <div>
+                    <p>Despre noi</p>
+                    <p>Presă</p>
+                    <p>Joburi</p>
+                    <p>Relații cu investitorii</p>
+                    <p>Politica de confidențialiate</p>
+                    <p>Termeni și condiții</p>
+                    <p>Date juridice</p>
+                </div>
+                <div>
+                    <p>&#169;</p>
+                    <p>2023 Clothes For All ECommerce coporation</p>
+                </div>
             </div>
-        </div>
-        <div class="About">
-            <div>
-                <p>Despre noi</p>
-                <p>Presă</p>
-                <p>Joburi</p>
-                <p>Relații cu investitorii</p>
-                <p>Politica de confidențialiate</p>
-                <p>Termeni și condiții</p>
-                <p>Date juridice</p>
-            </div>
-            <div>
-                <p>&#169;</p>
-                <p>2023 Clothes For All ECommerce coporation</p>
-            </div>
-        </div>
-    </footer>
-</main>
+        </footer>
+    </main>
 
     <script src="scriptnavbar.js"></script>
     <script src="scriptmeniu.js"></script>
@@ -524,6 +529,7 @@
     <script src="produse.js"></script>
     <script src="addtocart.js"></script>
     <script src="scriptcart.js"></script>
+    <script src="search.js"></script>
 </body>
 
 </html>

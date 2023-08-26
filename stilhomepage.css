@@ -137,6 +137,7 @@ nav .logo {
     display: flex;
     justify-content: center;
     z-index: 10;
+    position: relative;
 }
 
 .itemsnavbar div {
@@ -556,7 +557,7 @@ nav .cart {
 .dropdownmenu-cart .cart-plin .continut-cart {
     width: 20.3vw;
     display: flex;
-    margin: .5em;
+    margin: .9em;
     height: 8vh;
 }
 
@@ -633,4 +634,16 @@ nav .cart {
     display: grid;
     place-items: center;
     gap: 1em;
+}
+.in-development{
+    position: absolute;
+    z-index: 10000;
+    top: 6em;
+    right: 10em;
+    border: 1px solid #2b2b2b;
+    border-radius: 1em;
+    width: 17em;
+    background-color: #fff;
+   padding: .5em;
+   display: none;
 }

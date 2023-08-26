@@ -62,14 +62,14 @@ function sorteaza() {
             } else {
                 array.splice(index, 1);
             }
-            console.log(array, e)
+
             let containerProdus = document.querySelectorAll(".container-produs");
             containerProdus.forEach(container => {
                 const marimeprodus = container.querySelector(".descriere-marime");
                 const culoareprodus = container.querySelector(".descriere-culoare");
                 const marimiDisponibile = marimeprodus.innerHTML.trim().split(', ');
-                const culoriDisponibile=culoareprodus.innerHTML.trim().split(', ')
-                console.log(array, culoriDisponibile)
+                const culoriDisponibile = culoareprodus.innerHTML.trim().split(', ')
+
                 if (array.length === 0 || array.some(val => marimiDisponibile.includes(val)) || array.some(val => culoriDisponibile.includes(val))) {
                     container.classList.remove("hide");
                 } else {
@@ -112,9 +112,9 @@ alegeMarimeCuloare();
 function alegeMarimeCuloare() {
     let containerPreview = document.querySelectorAll(".preview-container-produs");
     containerPreview.forEach(e => {
-        let descriereCuloare=e.querySelector("#descriere-culoare");
+        let descriereCuloare = e.querySelector("#descriere-culoare");
         descriereCuloare.addEventListener("click", () => {
-            
+
             const ul = e.querySelector(".descriere-culoare ul");
             const arrowDown = e.querySelector(".descriere-culoare .arrow-down");
             const arrowUp = e.querySelector(".descriere-culoare .arrow-up");
@@ -179,51 +179,63 @@ function alegeMarimeCuloare() {
     document.addEventListener("click", x => {
         let containerPreview = document.querySelectorAll(".preview-container-produs");
         containerPreview.forEach(a => {
-                const descriereCuloare = a.querySelector("#descriere-culoare");
-                const descriereMarime = a.querySelector("#descriere-marime");
-                if (!descriereCuloare.contains(x.target) && !descriereMarime.contains(x.target)) {
-                    const c1c = a.querySelectorAll(".c1c");
-                    c1c.forEach(g => {
-                        const ul = g.querySelector("ul")
-                        const arrowDown = g.querySelector(".arrow-down");
-                        const arrowUp = g.querySelector(".arrow-up");
-                        ul.classList.remove("activ")
-                        arrowDown.classList.remove("inactiveaza-arrow")
-                        arrowUp.classList.add("inactiveaza-arrow");
-                    })
-                }
+            const descriereCuloare = a.querySelector("#descriere-culoare");
+            const descriereMarime = a.querySelector("#descriere-marime");
+            if (!descriereCuloare.contains(x.target) && !descriereMarime.contains(x.target)) {
+                const c1c = a.querySelectorAll(".c1c");
+                c1c.forEach(g => {
+                    const ul = g.querySelector("ul")
+                    const arrowDown = g.querySelector(".arrow-down");
+                    const arrowUp = g.querySelector(".arrow-up");
+                    ul.classList.remove("activ")
+                    arrowDown.classList.remove("inactiveaza-arrow")
+                    arrowUp.classList.add("inactiveaza-arrow");
+                })
+            }
         })
     })
 }
 function closePreview() {
-    let allContainerPreview=document.querySelectorAll(".preview-container-produs")
-        
-        allContainerPreview.forEach(el=>{
-            let inchidePreview = el.querySelector(".inchide-preview");
-            inchidePreview.addEventListener("click", () => {
-                const previewAfiseazaProd = document.querySelector(".preview-afiseaza-produse");
-                previewAfiseazaProd.style.display = "none";
-               el.style.display="none";
+    let allContainerPreview = document.querySelectorAll(".preview-container-produs")
+    allContainerPreview.forEach(el => {
+        let inchidePreview = el.querySelector(".inchide-preview");
+        inchidePreview.addEventListener("click", () => {
+            const previewAfiseazaProd = document.querySelector(".preview-afiseaza-produse");
+            previewAfiseazaProd.style.display = "none";
+            el.style.display = "none";
+        })
+    })
+}
+function targetPreview() {
+    let containerProdus = document.querySelectorAll(".container-produs");
+    let afiseazaProd = document.querySelector(".preview-afiseaza-produse")
+    containerProdus.forEach(card => {
+        card.addEventListener("click", () => {
+            afiseazaProd.style.display = "flex";
+            let dataProdus = card.getAttribute("data-produs-id")
+            let containerPreview = document.querySelectorAll(".preview-container-produs")
+            containerPreview.forEach(preview => {
+
+                let dataPreview = preview.getAttribute("data-target-id");
+
+                if (dataPreview == dataProdus) {
+                    preview.style.display = "flex";
+                }
             })
         })
-        
+    })
 }
-function targetPreview(){
-    let containerProdus=document.querySelectorAll(".container-produs");
-    let afiseazaProd = document.querySelector(".preview-afiseaza-produse")
-    containerProdus.forEach(card=>{
-        card.addEventListener("click", ()=>{
-            afiseazaProd.style.display="flex";
-            let dataProdus=card.getAttribute("data-produs-id")
-            let containerPreview = document.querySelectorAll(".preview-container-produs")
-        containerPreview.forEach(preview=>{
-           
-            let dataPreview=preview.getAttribute("data-target-id");
-            console.log(dataPreview, dataProdus)
-            if(dataPreview==dataProdus){
-                console.log(preview.style.display="flex");
-            }
-        })
-        })
+targetFromExterior();
+function targetFromExterior() {
+    let url = new URLSearchParams(window.location.search);
+    let getID = url.get("id")
+    let containerPreview = document.querySelectorAll(".preview-container-produs")
+    containerPreview.forEach(preview => {
+        let dataPreview = preview.getAttribute("data-target-id");
+        if (dataPreview == getID) {
+            const afiseazaProd = document.querySelector(".preview-afiseaza-produse")
+            afiseazaProd.style.display = "flex";
+            preview.style.display = "flex";
+        }
     })
 }

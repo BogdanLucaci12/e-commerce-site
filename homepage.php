@@ -1,6 +1,6 @@
 <?php
 require 'conectare.php';
-
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -124,15 +124,6 @@ require 'conectare.php';
             <h4>Produse</h4>
           </div>
           <div class="container-afisare-result">
-            <!-- <div class="rezultat">
-              <div class="result-img"><img src="produse/Nike Lenjerie Intima.jpg""></div>
-          <div class=" result-descriere">
-                <div class="result-description">lenjerie intima</div>
-                <div class="result-brand">Nike</div>
-                <div class="pret">350 <p>lei</p>
-                </div>
-              </div>
-            </div> -->
           </div>
         </div>
       </div>
@@ -141,7 +132,6 @@ require 'conectare.php';
         <div class="ajutor">
           <i class="fa-solid fa-circle-info"></i>
           <p>Ajutor</p>
-
         </div>
 
         <div>
@@ -152,10 +142,11 @@ require 'conectare.php';
           <i class="fa-regular fa-user"></i>
           <p>Utilizator</p>
         </div>
-        <div>
+        <div class="favorites">
           <p class="count-favs">0</p>
           <i class="fa-regular fa-star favorite"></i>
           <p>Favorite</p>
+         
         </div>
       </div>
       <div class="cart">
@@ -201,6 +192,10 @@ require 'conectare.php';
           </div>
         </div>
       </div>
+      <!-- dropdown menu fpr favorites-->
+       <div class="in-development">
+            In development...stay closed :)
+            </div>
       <!-- Meniul dropdown pentru iconita account -->
       <div class="dropdownmenu-myaccount">
         <div> <img src="icon/user-circle-svgrepo-com.png" alt="" width="70em"></div>
@@ -229,19 +224,6 @@ require 'conectare.php';
           <div class="adauga-produs-cart">
 
           </div>
-          <!-- <div class="continut-cart">
-                    <div class="imagine-produs-cart">
-                        <img src="${imagine}" alt="">
-                    </div>
-                    <div class="descriere-produs-cart">
-                        <div class="titlu-produs-cart">
-                            <p>${titlu}</p>
-                        </div>
-                        <div class="pret-produs-cart">
-                            <p>${pret} lei</p>
-                        </div>
-                    </div>
-                </div> -->
           <div class="total">
 
             <div class="total-articole">
