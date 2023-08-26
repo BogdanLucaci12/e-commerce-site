@@ -61,7 +61,6 @@ function addtocart() {
                     avertisment.style.display = "none"
                     lipsaMarime.style.display = "none";
                 }, 2000)
-
             }
             else {
                 const culoare = e.querySelector("button p").innerHTML;
@@ -99,7 +98,7 @@ function addtocart() {
                 setTimeout(() => {
                     produsAdaugat.style.display = "none"
                 }, 2000)
-               test()
+               
             }
         })
     })
@@ -151,9 +150,8 @@ function totalArticolesiPret() {
 }
 function sendToCart() {
     let goToPay = document.querySelector(".button-cart")
-    let jsonFromLocalStorage = JSON.parse(localStorage.getItem("myJSON"));
 
-    //     goToPay.addEventListener("click", ()=>{
-
-    // })
+        goToPay.addEventListener("click", ()=>{
+        window.location.href="cart.php"
+    })
 }
