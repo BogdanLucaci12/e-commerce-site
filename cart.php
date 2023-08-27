@@ -123,7 +123,7 @@ $sec = "";
 
             </div>
             <div class="logo">
-                <a href="homepage.html">
+                <a href="homepage.php">
                     <img src="logo.png" alt="" width="80px" height="80px" /></a>
             </div>
             <div class="search-bar">

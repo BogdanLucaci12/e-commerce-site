@@ -13,9 +13,81 @@ window.addEventListener('scroll', function () {
         listaStart.style.top = '0';
     }
 });
+window.onload=()=>{
+    
+}
 closePreview();
 targetPreview();
+butoaneSortare();
+countnrproduse();
+filtrare()
+alegeMarimeCuloare();
 // Butoane sortare
+
+let size = new Set();
+let size2 = new Set();
+preluareButoaneCuloareSiMarime();
+function preluareButoaneCuloareSiMarime() {
+    let containerProdus = document.querySelectorAll(".container-produs");
+    containerProdus.forEach(container => {
+        const marime = container.querySelector(".descriere-marime").innerHTML.trim().replace(/\s+/g, '');
+        const marimiSplit = marime.split(",")
+        marimiSplit.forEach(marimi => {
+            size.add(marimi);
+        })
+    })
+    let sortedSizes = Array.from(size).sort();
+    const sorteazaMarime = document.querySelector(".S1");
+    const buttons = sortedSizes.map(item => `<button>${item}</button>`).join("");
+    sorteazaMarime.innerHTML = buttons.replace(/,/g, '');
+    containerProdus.forEach(container => {
+        const marime = container.querySelector(".descriere-culoare").innerHTML.trim().replace(/\s+/g, '');
+        const marimiSplit = marime.split(",")
+        marimiSplit.forEach(marimi => {
+            size2.add(marimi);
+        })
+    })
+    let sortedSizes2 = Array.from(size2).sort();
+    const sorteazaMarime2 = document.querySelector(".S2");
+    const buttons2 = sortedSizes2.map(item => `<button>${item}</button>`).join("");
+    sorteazaMarime2.innerHTML = buttons2.replace(/,/g, '');
+
+    sorteaza()
+};
+function sorteaza() {
+    let array = [];
+    let sorteazaDiv = document.querySelectorAll(".sorteaza button");
+    sorteazaDiv.forEach(e => {
+        e.addEventListener("click", function () {
+            e.classList.toggle("marime-selectata");
+            const value = e.innerHTML;
+            const index = array.indexOf(value);
+            if (index === -1) {
+                array.push(value);
+            } else {
+                array.splice(index, 1);
+            }
+
+            let containerProdus = document.querySelectorAll(".container-produs");
+            containerProdus.forEach(container => {
+                const marimeprodus = container.querySelector(".descriere-marime");
+                const culoareprodus = container.querySelector(".descriere-culoare");
+                const marimiDisponibile = marimeprodus.innerHTML.trim().split(', ');
+                const culoriDisponibile = culoareprodus.innerHTML.trim().split(', ')
+
+                if (array.length === 0 || array.some(val => marimiDisponibile.includes(val)) || array.some(val => culoriDisponibile.includes(val))) {
+                    container.classList.remove("hide");
+                } else {
+                    container.classList.add("hide");
+                }
+            });
+
+            countnrproduse();
+        });
+    });
+
+}
+function butoaneSortare(){
 let select = document.querySelectorAll(".select");
 select.forEach(e => {
     let sorteaza = e.querySelector(".sorteaza");
@@ -42,46 +114,10 @@ select.forEach(e => {
         }
     })
 })
-
+}
 //Sortare
 
-sorteaza()
-countnrproduse();
-function sorteaza() {
-    let array = [];
-    let sorteazaMarime = document.querySelectorAll(".sorteaza button");
 
-    sorteazaMarime.forEach(e => {
-        e.addEventListener("click", function () {
-            e.classList.toggle("marime-selectata");
-            const value = e.innerHTML;
-            const index = array.indexOf(value);
-
-            if (index === -1) {
-                array.push(value);
-            } else {
-                array.splice(index, 1);
-            }
-
-            let containerProdus = document.querySelectorAll(".container-produs");
-            containerProdus.forEach(container => {
-                const marimeprodus = container.querySelector(".descriere-marime");
-                const culoareprodus = container.querySelector(".descriere-culoare");
-                const marimiDisponibile = marimeprodus.innerHTML.trim().split(', ');
-                const culoriDisponibile = culoareprodus.innerHTML.trim().split(', ')
-
-                if (array.length === 0 || array.some(val => marimiDisponibile.includes(val)) || array.some(val => culoriDisponibile.includes(val))) {
-                    container.classList.remove("hide");
-                } else {
-                    container.classList.add("hide");
-                }
-            });
-
-            countnrproduse();
-        });
-    });
-
-}
 function countnrproduse() {
     let nrprodusevizibile = document.querySelectorAll(".container-produs").length;
     let nrprodusehide = document.querySelectorAll(".hide").length
@@ -90,6 +126,7 @@ function countnrproduse() {
 }
 
 //Buton filtrare
+function filtrare() {
 let filtrareProduse = document.querySelector(".descriere-filtrare");
 filtrareProduse.addEventListener("click", e => {
 
@@ -108,7 +145,8 @@ filtrareProduse.addEventListener("click", e => {
 
     });
 });
-alegeMarimeCuloare();
+}
+
 function alegeMarimeCuloare() {
     let containerPreview = document.querySelectorAll(".preview-container-produs");
     containerPreview.forEach(e => {

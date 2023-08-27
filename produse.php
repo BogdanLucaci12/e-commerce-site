@@ -286,12 +286,12 @@ session_start();
                                 <img src="icon/arrow-down-svgrepo-com.png" alt="" class="arrow-down">
                                 <img src="icon/arrow-up-svgrepo-com.png" alt="" class="arrow-up inactiveaza-arrow">
                             </div>
-                            <div class="sorteaza">
-                                <button>XS</button>
+                            <div class="sorteaza S1">
+                                <!-- <button>XS</button>
                                 <button>S</button>
                                 <button>M</button>
                                 <button>L</button>
-                                <button>XL</button>
+                                <button>XL</button> -->
                             </div>
 
                         </div>
@@ -301,7 +301,7 @@ session_start();
                                 <img src="icon/arrow-down-svgrepo-com.png" alt="" class="arrow-down">
                                 <img src="icon/arrow-up-svgrepo-com.png" alt="" class="arrow-up inactiveaza-arrow">
                             </div>
-                            <div class="sorteaza">
+                            <div class="sorteaza S2">
                                 <button>Galben</button>
                                 <button>Alb</button>
                                 <button>Negru</button>
@@ -353,7 +353,6 @@ session_start();
                         <?php
                         $sql = "Select * FROM products";
                         $query = mysqli_query($conectare, $sql);
-                        $fetch = mysqli_fetch_array($query);
                         while ($fetch = mysqli_fetch_array($query)) {
                         ?>
                             <div class="preview-container-produs" data-target-id="<?php echo $fetch['product_id'] ?>">
@@ -577,7 +576,9 @@ session_start();
     <script src="scriptfooter.js"></script>
     <script src="produse.js"></script>
     <script src="addtocart.js"></script>
+   
     <script src="search.js"></script>
+
 </body>
 
 </html>

@@ -292,9 +292,14 @@ function stergeProdus() {
     produsCartPlata.forEach(e => {
         const stergeProdus = e.querySelector(".sterge-produs-cart-plata button")
         stergeProdus.addEventListener("click", () => {
-            const descriereProdus = e.querySelector(".descriere-produs-cart-plata").textContent;
+            const descriereProdus = e.querySelector(".descriere-produs-cart-plata p").innerHTML.trim();
             let index=cartStored.findIndex(item=> item.descriere===descriereProdus)
-            console.log(index, e, descriereProdus)
+            if(index!==-1){
+                cartStored.splice(index, 1);
+                localStorage.setItem("mycart", JSON.stringify(cartStored))
+            }
+            location.reload();
+            console.log(index, descriereProdus)
             // localStorage.removeItem("mycart")
         })
     })
