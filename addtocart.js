@@ -6,11 +6,11 @@ let cartStored = JSON.parse(cartJSONStored) || [];
 console.log(cartStored)
 function test() {
     let cartPlin = document.querySelector(".adauga-produs-cart");
+    cartPlin.innerHTML="";
     for (const item of cartStored) {
-
         const element = document.createElement("div");
         element.classList.add("continut-cart");
-        element.innerHTML = createProductInCart(item.imagine, item.titlu, item.pret, item.culoare, item.marime);
+        element.innerHTML = createProductInCart(item.imagine, item.descriere, item.pret, item.culoare, item.marime);
         cartPlin.append(element);
     }
     updateCartView();
@@ -24,10 +24,10 @@ function addtocart() {
     containerProdus.forEach(e => {
         let adaugaInCos = e.querySelector("button")
         adaugaInCos.addEventListener("click", (x) => {
-
             const imagine = e.querySelector("img").getAttribute("src")
-            const titlu = e.querySelector(".descriere-produs").innerHTML.trim();
+            const descriere = e.querySelector(".descriere-produs").innerHTML.trim();
             const pret = e.querySelector(".descriere-pret p").innerHTML.trim();
+            const brand=e.querySelector(".brand").innerHTML.trim();
             const culoareElement = e.querySelector("button p");
             const marimeElement = e.querySelector("button div");
             let avertisment = e.querySelector(".avertisment-lipsa-marime-culoare")
@@ -65,13 +65,14 @@ function addtocart() {
             else {
                 const culoare = e.querySelector("button p").innerHTML;
                 const marime = e.querySelector("button div").innerHTML;
-                function addToCartT(imagine, titlu, pret, culoare, marime) {
+                function addToCartT(imagine, brand, descriere, pret, culoare, marime) {
                     const existingItem = cartStored.find(item => item.imagine === imagine && item.culoare === culoare && item.marime === marime);
                     console.log(existingItem)
                     if (!existingItem) {
                         cartStored.push({
                             imagine: imagine,
-                            titlu: titlu,
+                            brand: brand,
+                            descriere: descriere,
                             pret: pret,
                             culoare: culoare,
                             marime: marime
@@ -79,7 +80,6 @@ function addtocart() {
                         // Actualizează datele în localStorage
                         const cartJSON = JSON.stringify(cartStored);
                         localStorage.setItem("mycart", cartJSON);
-
                     }
                     else {
                         const produsulExista = e.querySelector(".produsul-exista")
@@ -91,14 +91,14 @@ function addtocart() {
                     }
                 }
 
-                addToCartT(imagine, titlu, pret, culoare, marime);
+                addToCartT(imagine,brand ,descriere, pret, culoare, marime);
                 const produsAdaugat = e.querySelector(".produs-adaugat-cos")
                 produsAdaugat.style.display = "flex";
                 produsAdaugat.style.top = "20%";
                 setTimeout(() => {
                     produsAdaugat.style.display = "none"
                 }, 2000)
-               
+               test()
             }
         })
     })
@@ -119,13 +119,13 @@ function updateCartView() {
 }
 
 
-function createProductInCart(imagine, titlu, pret, culoare, marime) {
+function createProductInCart(imagine, descriere, pret, culoare, marime) {
     return `
          <div class="imagine-produs-cart">
                 <img src="${imagine}" alt="">
             </div>
             <div class="descriere-produs-cart">
-                <div class="titlu-produs-cart"><p>${titlu}</p></div>
+                <div class="titlu-produs-cart"><p>${descriere}</p></div>
                 <div class="culoare-produs-cart">Culoare:<p>${culoare}</p></div>
                    <div class="marime-produs-cart">Marime:<p>${marime}</p></div>
                 <div class="pret-produs-cart"><p>${pret}</p><p>lei</p></div>
@@ -147,11 +147,4 @@ function totalArticolesiPret() {
         total += pretProdus
     })
     countTotal.innerHTML = total
-}
-function sendToCart() {
-    let goToPay = document.querySelector(".button-cart")
-
-        goToPay.addEventListener("click", ()=>{
-        window.location.href="cart.php"
-    })
 }

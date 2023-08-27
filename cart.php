@@ -1,11 +1,22 @@
 <?php
 // require 'conectare.php';
 session_start();
+if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
+    $url = "https://";
+} else {
+    $url = 'http://';
+    $url .= $_SERVER['HTTP_HOST'];
+    $url .= $_SERVER['REQUEST_URI'];
+    $url;
+}
+$page = $url;
+$sec = "";
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+    <meta http-equiv="refresh" content="<?php echo $sec; ?>" URL="<?php echo $page; ?>">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cos-cumparaturi</title>
@@ -145,7 +156,7 @@ session_start();
                     <i class="fa-regular fa-user"></i>
                     <p>Utilizator</p>
                 </div>
-                <div>
+                <div class="favorites">
                     <p class="count-favs">0</p>
                     <i class="fa-regular fa-star favorite"></i>
                     <p>Favorite</p>
@@ -193,6 +204,10 @@ session_start();
                         <h4>Contacta-ti <a href="#">Serviciul relatii cu clientii</a></h4>
                     </div>
                 </div>
+            </div>
+            <!-- dropdown menu fpr favorites-->
+            <div class="in-development">
+                In development...stay closed :)
             </div>
             <!-- Meniul dropdown pentru iconita account -->
             <div class="dropdownmenu-myaccount">
@@ -274,7 +289,7 @@ session_start();
                         <div class="produsele-cosul-tau">
                             <div class="data-livrare">
                             </div>
-                            <div class="produsele-din-cart">
+                            <!-- <div class="produsele-din-cart">
                                 <div class="div-left">
                                     <div class="imagine-produs-cart-plata"><img src="produse/Nike Jordan Pantofi.jpg" alt=""></div>
                                     <div class="afisarea-produsului">
@@ -315,48 +330,7 @@ session_start();
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="produsele-din-cart">
-                                <div class="div-left">
-                                    <div class="imagine-produs-cart-plata"><img src="produse/Nike Jordan Pantofi.jpg" alt=""></div>
-                                    <div class="afisarea-produsului">
-                                        <div class="produs-cart-plata">
-                                            <div class="titlu-produs-cart-plata">
-                                                <h3>Nike</h3>
-                                            </div>
-                                            <div class="descriere-produs-cart-plata">
-                                                <p>Jordan Retro 6</p>
-                                            </div>
-                                            <div class="marime-produs-cart-plata">
-                                                <p>M</p>
-                                            </div>
-                                            <div class="culoare-produs-cart-plata">
-                                                <p>Galben</p>
-                                            </div>
-                                            <div class="cantitate-produs-cart-plata">x <p class="sumar-cantitate-produs-cart-plata">1</p>
-                                            </div>
-                                        </div>
-                                        <div class="sterge-produs-cart-plata"><button>Sterge produsul</button></div>
-                                    </div>
-                                </div>
-
-                                <div class="div-right">
-                                    <div class="cantitate-produs-cart-plata"><img class="plus" src="icon/plus-square-svgrepo-com.png" alt="">
-                                        <h2 class="cantitatea-dorita"></h2>
-                                        <img class="minus" src="icon/minus-square-svgrepo-com.png" alt="">
-                                    </div>
-                                    <div class="pret-produs-cart-plata">
-                                        <div class="pret-produs-per-cantitate">
-                                            <p id="pret-produs-per-cantitate"></p>
-                                            <p>lei</p>
-                                        </div>
-                                        <div class="pret-initial-produs">
-                                            <p id="pret-initial-produs">26</p>
-                                            <p>lei fiecare</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -368,7 +342,7 @@ session_start();
                                     <p>Subtotal</p>
                                 </div>
                                 <div>
-                                    <p class="subtotal-toate-produsele"></p>
+                                    <p class="subtotal-toate-produsele"></p>lei
                                 </div>
                             </li>
                             <li>
@@ -527,7 +501,6 @@ session_start();
     <script src="scriptmeniu.js"></script>
     <script src="scriptfooter.js"></script>
     <script src="produse.js"></script>
-    <script src="addtocart.js"></script>
     <script src="scriptcart.js"></script>
     <script src="search.js"></script>
 </body>

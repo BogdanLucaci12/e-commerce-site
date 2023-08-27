@@ -5,7 +5,7 @@ section {
 }
 
 .section-cart-gol {
-    display: none;
+    display: flex;
     position: relative;
     justify-content: center;
     align-items: center;
@@ -13,7 +13,7 @@ section {
 }
 
 .section-cart-plin {
-    display: block;
+    display: none;
     position: relative;
     width: 100%;
     height: auto;

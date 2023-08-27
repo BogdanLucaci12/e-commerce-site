@@ -33,7 +33,7 @@ hoveraccount.addEventListener("mouseout", () => {
 let dropdownmenucart = document.querySelector(".dropdownmenu-cart")
 let hovercart = document.querySelector(".cart")
 hovercart.addEventListener("click", () => {
-    window.location.href = "cart.html"
+    window.location.href = "cart.php"
 })
 hovercart.addEventListener("mouseover", () => {
     dropdownmenucart.style.display = "flex"

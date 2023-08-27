@@ -557,8 +557,9 @@ nav .cart {
 .dropdownmenu-cart .cart-plin .continut-cart {
     width: 20.3vw;
     display: flex;
-    margin: .9em;
+    margin: 1em;
     height: 8vh;
+    font-size: .9em;
 }
 
 .dropdownmenu-cart .descriere-produs-cart {
