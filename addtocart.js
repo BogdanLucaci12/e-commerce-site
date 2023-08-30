@@ -3,7 +3,6 @@ window.onload = () => {
 }
 let cartJSONStored = localStorage.getItem("mycart");
 let cartStored = JSON.parse(cartJSONStored) || [];
-console.log(cartStored)
 function test() {
     let cartPlin = document.querySelector(".adauga-produs-cart");
     cartPlin.innerHTML="";
@@ -67,7 +66,6 @@ function addtocart() {
                 const marime = e.querySelector("button div").innerHTML;
                 function addToCartT(imagine, brand, descriere, pret, culoare, marime) {
                     const existingItem = cartStored.find(item => item.imagine === imagine && item.culoare === culoare && item.marime === marime);
-                    console.log(existingItem)
                     if (!existingItem) {
                         cartStored.push({
                             imagine: imagine,
@@ -80,24 +78,21 @@ function addtocart() {
                         // Actualizează datele în localStorage
                         const cartJSON = JSON.stringify(cartStored);
                         localStorage.setItem("mycart", cartJSON);
+                        const produsAdaugat = e.querySelector(".produs-adaugat-cos")
+                        produsAdaugat.style.display = "flex";
+                        produsAdaugat.style.top = "20%";
+                        setTimeout(() => {
+                            produsAdaugat.style.display = "none"
+                        }, 2000)
                     }
                     else {
-                        const produsulExista = e.querySelector(".produsul-exista")
-                        produsulExista.style.display = "flex"
-                        setTimeout(() => {
-                            produsulExista.style.display = "none"
-                        }, 2000)
+                        
                         return
                     }
                 }
 
                 addToCartT(imagine,brand ,descriere, pret, culoare, marime);
-                const produsAdaugat = e.querySelector(".produs-adaugat-cos")
-                produsAdaugat.style.display = "flex";
-                produsAdaugat.style.top = "20%";
-                setTimeout(() => {
-                    produsAdaugat.style.display = "none"
-                }, 2000)
+               
                test()
             }
         })

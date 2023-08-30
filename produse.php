@@ -242,21 +242,6 @@ session_start();
     <main>
         <section>
             <div class="lista-start">
-
-                <select name="Haine" id="Haine">
-                    <option value="0">Haine</option>
-                    <option value="1">Geci</option>
-                    <option value="2">Cămăși</option>
-                    <option value="3">Șlapi</option>
-                    <option value="4">Hanorac</option>
-                    <option value="5">Pantaloni</option>
-                </select>
-                <p>Sneakers</p>
-                <p>Șlapi</p>
-                <p>Pantofi Sport</p>
-                <h3>Accesorii</h3>
-
-
             </div>
             <div class="header-lista-afisare-produse">
                 <div class="categorie-produs">
@@ -272,8 +257,8 @@ session_start();
                             <img src="icon/arrow-up-svgrepo-com.png" alt="" class="arrow-up inactiveaza-arrow">
                         </div>
                         <div class="continut-filtrare">
-                            <button>Cel mai mic preț</button>
-                            <button>Cel mai mare preț</button>
+                            <button class="cel-mai-mic">Cel mai mic preț</button>
+                            <button class="cel-mai-mare">Cel mai mare preț</button>
                         </div>
                     </div>
                 </div>
@@ -287,11 +272,6 @@ session_start();
                                 <img src="icon/arrow-up-svgrepo-com.png" alt="" class="arrow-up inactiveaza-arrow">
                             </div>
                             <div class="sorteaza S1">
-                                <!-- <button>XS</button>
-                                <button>S</button>
-                                <button>M</button>
-                                <button>L</button>
-                                <button>XL</button> -->
                             </div>
 
                         </div>
@@ -302,53 +282,14 @@ session_start();
                                 <img src="icon/arrow-up-svgrepo-com.png" alt="" class="arrow-up inactiveaza-arrow">
                             </div>
                             <div class="sorteaza S2">
-                                <button>Galben</button>
-                                <button>Alb</button>
-                                <button>Negru</button>
-                                <button>Roz</button>
-                                <button>Gri</button>
                             </div>
 
                         </div>
 
                     </div>
                     <div class="afiseaza-produse">
-                        <?php
-                        $sql = "Select * FROM products";
-                        $query = mysqli_query($conectare, $sql);
 
-                        while ($fetch = mysqli_fetch_array($query)) {
-                        ?>
-                            <div class="container-produs" data-produs-id="<?php echo $fetch['product_id'] ?>">
-                                <div class="imagine-produs">
-                                    <img src="<?php echo $fetch['image_url'] ?>"" alt="">
-                            </div>
-                            <div class=" header-container"><i class="fa-regular fa-star favorite"></i>
-                                </div>
-                                <div class="descriere">
-                                    <h3 class="brand">
-                                        <?php echo $fetch['product_name'] ?>
-                                    </h3>
-                                    <p class="descriere-produs">
-                                        <?php echo $fetch['description'] ?>
-                                    </p>
-                                    <h3 class="descriere-pret">
-                                        <p>
-                                            <?php echo $fetch['price'] ?>
-                                        </p>lei
-                                    </h3>
-                                    <ul class="descriere-culoare">
-                                        <?php echo $fetch['color'] ?>
-                                    </ul>
-                                    <div class="descriere-marime">
-                                        <?php echo $fetch['size'] ?>
-                                    </div>
-
-                                </div>
-                            </div>
-                        <?php } ?>
                     </div>
-
                     <div class="preview-afiseaza-produse">
                         <?php
                         $sql = "Select * FROM products";
@@ -574,10 +515,12 @@ session_start();
     <script src="scriptnavbar.js"></script>
     <script src="scriptmeniu.js"></script>
     <script src="scriptfooter.js"></script>
+    <script src="listaStartproduse.js"></script>
     <script src="produse.js"></script>
+
     <script src="addtocart.js"></script>
-   
     <script src="search.js"></script>
+
 
 </body>
 

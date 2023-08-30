@@ -13,20 +13,101 @@ window.addEventListener('scroll', function () {
         listaStart.style.top = '0';
     }
 });
-window.onload=()=>{
-    
-}
-closePreview();
-targetPreview();
-butoaneSortare();
-countnrproduse();
-filtrare()
-alegeMarimeCuloare();
-// Butoane sortare
 
 let size = new Set();
 let size2 = new Set();
-preluareButoaneCuloareSiMarime();
+
+getDataProduse()
+function getDataProduse() {
+    let ajax = new XMLHttpRequest();
+    ajax.addEventListener("readystatechange", () => {
+        if (ajax.readyState == 4 && ajax.status == 200) {
+            result(ajax.responseText);
+        }
+    });
+    ajax.open('POST', 'queryDB.php', true);
+    ajax.send();
+}
+let mic = document.querySelector(".cel-mai-mic");
+mic.addEventListener("click", (e) => {
+    filtreazaCresc()
+})
+let mare=document.querySelector(".cel-mai-mare");
+mare.addEventListener("click", filtrareDesc)
+function filtreazaCresc() {
+    let ajax = new XMLHttpRequest();
+    ajax.addEventListener("readystatechange", () => {
+        if (ajax.readyState == 4 && ajax.status == 200) {
+            result(ajax.responseText);
+        }
+    });
+    ajax.open('GET', 'queryDB.php?mic', true);
+    ajax.send();
+}
+function filtrareDesc(){
+    let ajax = new XMLHttpRequest();
+    ajax.addEventListener("readystatechange", () => {
+        if (ajax.readyState == 4 && ajax.status == 200) {
+            result(ajax.responseText);
+        }
+    });
+    ajax.open('GET', 'queryDB.php?mare', true);
+    ajax.send();
+}
+
+function result(result) {
+    let interogare = JSON.parse(result);
+    let string = "";
+    let afiseazaProd = document.querySelector(".afiseaza-produse");
+    interogare.forEach(e => {
+        const returneazaProduse = afisareProduseInPagina(e.product_id, e.gender_id ,e.image_url, e.product_name, e.description ,e.price, e.color, e.size)
+        string += returneazaProduse
+    })
+    afiseazaProd.innerHTML = string;
+    targetPreview();
+    countnrproduse();
+    alegeMarimeCuloare();
+    afiseazabutoanefiltrare()
+    preluareButoaneCuloareSiMarime();
+    closePreview();
+
+    butoaneSortare();
+}
+function afisareProduseInPagina(id, gender,image, brand, descriere, pret, culori, marime) {
+    return `
+
+                            <div class="container-produs" data-produs-id="${id}" data-gender="${gender}">
+                                <div class="imagine-produs">
+                                    <img src="${image}" alt="">
+                            </div>
+                            <div class=" header-container"><i class="fa-regular fa-star favorite"></i>
+                                </div>
+                                <div class="descriere">
+                                    <h3 class="brand">
+                                        ${brand}
+                                    </h3>
+                                    <p class="descriere-produs">
+                                        ${descriere}
+                                    </p>
+                                    <h3 class="descriere-pret">
+                                        <p>
+                                            ${pret}
+                                        </p>lei
+                                    </h3>
+                                    <ul class="descriere-culoare">
+                                        ${culori}
+                                    </ul>
+                                    <div class="descriere-marime">
+                                        ${marime}
+                                    </div>
+                                </div>
+                            </div>
+
+`
+}
+
+// Butoane sortare
+
 function preluareButoaneCuloareSiMarime() {
     let containerProdus = document.querySelectorAll(".container-produs");
     containerProdus.forEach(container => {
@@ -126,7 +207,7 @@ function countnrproduse() {
 }
 
 //Buton filtrare
-function filtrare() {
+function afiseazabutoanefiltrare() {
 let filtrareProduse = document.querySelector(".descriere-filtrare");
 filtrareProduse.addEventListener("click", e => {
 
@@ -253,9 +334,7 @@ function targetPreview() {
             let dataProdus = card.getAttribute("data-produs-id")
             let containerPreview = document.querySelectorAll(".preview-container-produs")
             containerPreview.forEach(preview => {
-
                 let dataPreview = preview.getAttribute("data-target-id");
-
                 if (dataPreview == dataProdus) {
                     preview.style.display = "flex";
                 }
@@ -277,3 +356,4 @@ function targetFromExterior() {
         }
     })
 }
+

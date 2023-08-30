@@ -23,14 +23,20 @@ section .lista-start {
     position: sticky;
     padding-left: 3%;
 }
-
+.lista-start div{
+    cursor: pointer;
+    margin: .2em;
+}
+.lista-start div div h5{
+    cursor: pointer;
+    margin: .5em;
+}
 section .header-lista-afisare-produse {
     width: 94%;
     height: auto;
     display: block;
     margin: 0 auto;
 }
-
 section .categorie-produs {
     width: 94%;
     display: flex;
