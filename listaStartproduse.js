@@ -69,17 +69,36 @@ function showImbracaminte(){
     let listaStarth5=document.querySelectorAll(".lista-start h5");
     function handleH5Click(x){
       const categorih5Id=x.target.closest("div").getAttribute("data-category-id");
-      const categoriidbygender=x.target.closest("div").closest("div").getAttribute("data-gender");
-      console.log(categorih5Id, categoriidbygender)
-    //   let ajax=new XMLHttpRequest();
-    //   ajax.addEventListener("readystatechange", ()=>{
-    //       if (ajax.readyState == 4 && ajax.status == 200) {
-
-    //       }
-    //   })
-    //   ajax.open("POST", "listaStartinterogare.php", true);
-    //     ajax.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    //     ajax.send("category="+categorih5Id);
+        const genderbyID = x.target.closest("div").closest("[data-gender]").getAttribute("data-gender");
+     
+      console.log(categorih5Id, genderbyID)
+      let ajax=new XMLHttpRequest();
+      ajax.addEventListener("readystatechange", ()=>{
+          if (ajax.readyState == 4 && ajax.status == 200) {
+             const imbracaminte=JSON.parse(ajax.responseText);
+             let imbracaminteMAP=new Map();
+             for(const i of imbracaminte){
+                const imbracaminteID=i.imbracaminte_id;
+                const imbracaminteName=i.imbracaminte_name
+                if(!imbracaminteMAP.has(imbracaminteID)){
+                imbracaminteMAP.set(imbracaminteID,imbracaminteName)
+             }
+          }
+              console.log(imbracaminteMAP)
+              const targetedDiv = x.target.closest("div");
+              imbracaminteMAP.forEach((name, id) =>{
+                  const div=document.createElement("div");
+                  const p=document.createElement("p");
+                  p.innerHTML=name;
+                  p.style.cursor="pointer";
+                  div.setAttribute("data-imbracaminte-id", id);
+                  targetedDiv.appendChild(div).appendChild(p);;
+              })
+        }
+      })
+      ajax.open("POST", "listaStartinterogare.php", true);
+        ajax.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        ajax.send("category=" +categorih5Id+ "&genderID=" +genderbyID);
     }
     listaStarth5.forEach(e=>{
         e.addEventListener("click", handleH5Click, { once: true });
