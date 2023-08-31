@@ -19,6 +19,7 @@ let size2 = new Set();
 
 getDataProduse()
 function getDataProduse() {
+    showResultFromMeniuPreview()
     let ajax = new XMLHttpRequest();
     ajax.addEventListener("readystatechange", () => {
         if (ajax.readyState == 4 && ajax.status == 200) {
@@ -54,13 +55,30 @@ function filtrareDesc(){
     ajax.open('GET', 'queryDB.php?mare', true);
     ajax.send();
 }
+function showResultFromMeniuPreview() {
+    let url = new URLSearchParams(window.location.search);
+    let gender = url.get("gender_id");
+    let category = url.get("category_id");
+    console.log(category, gender);
+    let ajax = new XMLHttpRequest();
+    ajax.addEventListener("readystatechange", () => {
+        if (ajax.readyState == 4 && ajax.status == 200) {
+            result(ajax.responseText);
+        }
+    });
+    ajax.open('POST', 'queryDB.php?', true);
+    ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    ajax.send('gender_id=' + gender + '&category_id=' + category);
+   
+}
 
 function result(result) {
     let interogare = JSON.parse(result);
+    console.log(interogare)
     let string = "";
     let afiseazaProd = document.querySelector(".afiseaza-produse");
     interogare.forEach(e => {
-        const returneazaProduse = afisareProduseInPagina(e.product_id, e.gender_id ,e.image_url, e.product_name, e.description ,e.price, e.color, e.size)
+        const returneazaProduse = afisareProduseInPagina(e.product_id, e.gender_id, e.categorie_id, e.imbracaminte_id  ,e.image_url, e.product_name, e.description ,e.price, e.color, e.size)
         string += returneazaProduse
     })
     afiseazaProd.innerHTML = string;
@@ -70,13 +88,12 @@ function result(result) {
     afiseazabutoanefiltrare()
     preluareButoaneCuloareSiMarime();
     closePreview();
-
     butoaneSortare();
 }
-function afisareProduseInPagina(id, gender,image, brand, descriere, pret, culori, marime) {
+function afisareProduseInPagina(id, gender, categorie, imbracaminte, image, brand, descriere, pret, culori, marime) {
     return `
 
-                            <div class="container-produs" data-produs-id="${id}" data-gender="${gender}">
+                            <div class="container-produs" data-produs-id="${id}" data-gender="${gender}" data-category="${categorie}" data-imbracaminte="${imbracaminte}">
                                 <div class="imagine-produs">
                                     <img src="${image}" alt="">
                             </div>
@@ -342,6 +359,7 @@ function targetPreview() {
         })
     })
 }
+
 targetFromExterior();
 function targetFromExterior() {
     let url = new URLSearchParams(window.location.search);

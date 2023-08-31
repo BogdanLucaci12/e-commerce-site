@@ -19,6 +19,8 @@ header.style.transform="translateX(20vw)";
 const main=document.querySelector("main")
 main.style.transform="translateX(20vw)"
 main.style.opacity=".5"
+// body.style.overflowY="hidden";
+// body.style.overflowX="hidden"; 
 const meniupreview=document.querySelector(".meniupreview");
 meniupreview.style.display="block"
 meniuiconbars.style.display="none"
@@ -31,6 +33,7 @@ function inchidemeniul(){
     const main = document.querySelector("main")
     main.style.transform = "translateX(0)"
     main.style.opacity = "1"
+    // body.style.overflowY = "scroll";
     const meniupreview = document.querySelector(".meniupreview");
     meniupreview.style.display = "none"
     meniuiconbars.style.display = "block"
@@ -86,4 +89,14 @@ let arrowleftfemei = document.querySelector(".femei .titlu img");
      const meniulfemei = document.querySelector(".femei");
      meniulfemei.style.transform = "translateX(-20vw)"
  }
-
+targetMeniuBarbati()
+function targetMeniuBarbati(){
+    let barbati=document.querySelectorAll(".barbati div")
+    barbati.forEach(div=>{
+        div.addEventListener("click", e=>{
+            let categorie = div.getAttribute("data-category-id")
+            window.location.href = `produse.php?category_id=${categorie}&gender_id=1`
+        })
+    })
+    console.log(barbati)
+}

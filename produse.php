@@ -108,7 +108,7 @@ session_start();
                 </button>
             </div>
             <div class="logo">
-                <a href="homepage.html">
+                <a href="homepage.php">
                     <img src="logo.png" alt="" width="80px" height="80px" /></a>
             </div>
             <div class="search-bar">
@@ -242,6 +242,14 @@ session_start();
     <main>
         <section>
             <div class="lista-start">
+                <?php
+                $sqlgender = "SELECT * FROM gender";
+                $querygender = mysqli_query($conectare, $sqlgender);
+                while ($rowgender = mysqli_fetch_array($querygender)) {
+                    echo "<div data-gender-id={$rowgender['gender_id']}><h3>{$rowgender['gender_name']}</h3></div>";
+                }
+                ?>
+
             </div>
             <div class="header-lista-afisare-produse">
                 <div class="categorie-produs">
@@ -515,7 +523,9 @@ session_start();
     <script src="scriptnavbar.js"></script>
     <script src="scriptmeniu.js"></script>
     <script src="scriptfooter.js"></script>
+
     <script src="listaStartproduse.js"></script>
+
     <script src="produse.js"></script>
 
     <script src="addtocart.js"></script>
