@@ -274,18 +274,18 @@ nav .cart {
 
 .dropdownmenu-myaccount div a {
     text-decoration: none;
-    color: #e8e8e8;
-    background-color: #bababa;
-    padding: .6em;
+    color: #fff;
+    background-color: #2b2b2b;
+    padding: .3em;
     border-radius: 15px;
     box-shadow: .1em .1em .4em .4em rgba(186, 186, 186, .4);
-    font-size: 1.5em;
+    font-size: 1.2em;
 }
 
 .dropdownmenu-myaccount div a:hover {
-    background-color: #2b2b2b;
-    color: #bababa;
-    text-decoration: underline;
+    background-color: #fff;
+    color: #2b2b2b;
+    border: #2b2b2b;
 }
 
 .dropdownmenu-cart {

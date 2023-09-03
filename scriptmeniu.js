@@ -89,14 +89,29 @@ let arrowleftfemei = document.querySelector(".femei .titlu img");
      const meniulfemei = document.querySelector(".femei");
      meniulfemei.style.transform = "translateX(-20vw)"
  }
-targetMeniuBarbati()
-function targetMeniuBarbati(){
-    let barbati=document.querySelectorAll(".barbati div")
-    barbati.forEach(div=>{
+
+ //afiseaza meniu unisex
+let divunisex = meniuprincpaldiv[3];
+let arrowleftunisex = document.querySelector(".unisex .titlu img");
+divunisex.addEventListener("click", afiseazameniuunisex)
+arrowleftunisex.addEventListener("click", inchidemeniuunisex)
+function afiseazameniuunisex() {
+    const meniulunisex = document.querySelector(".unisex")
+    meniulunisex.style.transform = "translateX(0)"
+}
+inchidemeniuunisex()
+function inchidemeniuunisex() {
+    const meniulunisex = document.querySelector(".unisex");
+    meniulunisex.style.transform = "translateX(-20vw)"
+
+}
+targetMeniu()
+function targetMeniu(){
+    let alegeData=document.querySelectorAll(".alege-data")
+    alegeData.forEach(div=>{
         div.addEventListener("click", e=>{
             let categorie = div.getAttribute("data-category-id")
             window.location.href = `produse.php?category_id=${categorie}&gender_id=1`
         })
     })
-    console.log(barbati)
 }

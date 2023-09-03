@@ -233,7 +233,7 @@ session_start();
                         </div>
 
                     </div>
-                    <div class="button-cart"> <a href="#">Cos de cumpărături</a></div>
+                    <div class="button-cart"> <a href="cart.php">Cos de cumpărături</a></div>
                 </div>
             </div>
         </nav>
@@ -249,12 +249,11 @@ session_start();
                     echo "<div data-gender-id={$rowgender['gender_id']}><h3>{$rowgender['gender_name']}</h3></div>";
                 }
                 ?>
-
             </div>
             <div class="header-lista-afisare-produse">
                 <div class="categorie-produs">
                     <div class="count-nr-produse">
-                        <h1>Geci</h1>
+                        <h1>Produse</h1>
                         <p id="count-nr-produse"></p>
                     </div>
                     <div class="filtreaza-produsele">
@@ -523,9 +522,7 @@ session_start();
     <script src="scriptnavbar.js"></script>
     <script src="scriptmeniu.js"></script>
     <script src="scriptfooter.js"></script>
-
     <script src="listaStartproduse.js"></script>
-
     <script src="produse.js"></script>
 
     <script src="addtocart.js"></script>

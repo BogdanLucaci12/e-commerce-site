@@ -17,68 +17,198 @@ window.addEventListener('scroll', function () {
 let size = new Set();
 let size2 = new Set();
 
-getDataProduse()
+showResultByTargetGender()
+showResultFromMeniuPreview()
+
+function showResultFromMeniuPreview() {
+    let url = new URLSearchParams(window.location.search);
+    let gender = url.get("gender_id");
+    let category = url.get("category_id");
+    if (gender === null && category === null) {
+        getDataProduse()
+    }
+    else {
+        let ajax = new XMLHttpRequest();
+        ajax.addEventListener("readystatechange", () => {
+            if (ajax.readyState == 4 && ajax.status == 200) {
+                result(ajax.responseText);
+                const afisareGender = document.querySelector(".count-nr-produse h1")
+                afisareGender.innerHTML = ""
+                if (gender == 1) {
+                    afisareGender.innerHTML = "Barbat";
+                }
+                else if (gender == 2) {
+                    afisareGender.innerHTML = "Femeie";
+                }
+                else if (gender == 3) {
+                    afisareGender.innerHTML = "Unisex";
+                }
+                const mic = document.querySelector(".cel-mai-mic");
+                mic.addEventListener("click", function () {
+                    filtreazaCresc(gender, category);
+                });
+                const mare=document.querySelector(".cel-mai-mare");
+                mare.addEventListener("click", () =>{
+                    filtrareDesc(gender, category); 
+                });
+            }
+
+        });
+        ajax.open('POST', 'queryDB.php', true);
+        ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        ajax.send('gender_id=' + gender + '&category_id=' + category);
+    }
+}
+
 function getDataProduse() {
-    showResultFromMeniuPreview()
     let ajax = new XMLHttpRequest();
     ajax.addEventListener("readystatechange", () => {
         if (ajax.readyState == 4 && ajax.status == 200) {
             result(ajax.responseText);
+            let mic = document.querySelector(".cel-mai-mic");
+            mic.addEventListener("click", () => {
+                filtreazaCresc()
+            })
+            let mare = document.querySelector(".cel-mai-mare");
+            mare.addEventListener("click", () => {
+                filtrareDesc()
+            })
         }
     });
     ajax.open('POST', 'queryDB.php', true);
     ajax.send();
 }
-let mic = document.querySelector(".cel-mai-mic");
-mic.addEventListener("click", (e) => {
-    filtreazaCresc()
-})
-let mare=document.querySelector(".cel-mai-mare");
-mare.addEventListener("click", filtrareDesc)
-function filtreazaCresc() {
+
+function filtreazaCresc(gender, category) {
     let ajax = new XMLHttpRequest();
     ajax.addEventListener("readystatechange", () => {
         if (ajax.readyState == 4 && ajax.status == 200) {
             result(ajax.responseText);
+            targetPreview();
+            countnrproduse();
+            alegeMarimeCuloare();
+            afiseazabutoanefiltrare()
+            preluareButoaneCuloareSiMarime();
+            closePreview();
+            butoaneSortare();
         }
-    });
-    ajax.open('GET', 'queryDB.php?mic', true);
-    ajax.send();
-}
-function filtrareDesc(){
-    let ajax = new XMLHttpRequest();
-    ajax.addEventListener("readystatechange", () => {
-        if (ajax.readyState == 4 && ajax.status == 200) {
-            result(ajax.responseText);
-        }
-    });
-    ajax.open('GET', 'queryDB.php?mare', true);
-    ajax.send();
-}
-function showResultFromMeniuPreview() {
-    let url = new URLSearchParams(window.location.search);
-    let gender = url.get("gender_id");
-    let category = url.get("category_id");
-    console.log(category, gender);
-    let ajax = new XMLHttpRequest();
-    ajax.addEventListener("readystatechange", () => {
-        if (ajax.readyState == 4 && ajax.status == 200) {
-            result(ajax.responseText);
-        }
-    });
-    ajax.open('POST', 'queryDB.php?', true);
-    ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    ajax.send('gender_id=' + gender + '&category_id=' + category);
+    })
    
+    if (typeof gender === "undefined" && typeof category === "undefined") {
+        ajax.open('GET', 'queryDB.php?mic', true);
+        ajax.send();
+        return
+    }
+    else{
+        ajax.open('GET', 'queryDB.php?mic&gender_id=' + gender + '&category_id=' + category, true);
+        ajax.send()
+        return
+    }
+    
+    
+
+}
+function filtrareDesc(gender, category) {
+    let ajax = new XMLHttpRequest();
+    ajax.addEventListener("readystatechange", () => {
+        if (ajax.readyState == 4 && ajax.status == 200) {
+            result(ajax.responseText);
+            
+            targetPreview();
+            countnrproduse();
+            alegeMarimeCuloare();
+            afiseazabutoanefiltrare()
+            preluareButoaneCuloareSiMarime();
+            closePreview();
+            butoaneSortare();
+        }
+    });
+    if (typeof gender === "undefined" && typeof category === "undefined") {
+        ajax.open('GET', 'queryDB.php?mare', true);
+        ajax.send();
+    }
+    else {
+        ajax.open('GET', 'queryDB.php?mare&gender_id=' + gender + '&category_id=' + category, true);
+        ajax.send()
+    }
 }
 
+function showResultByTargetGender() {
+    let gender = document.querySelectorAll(".lista-start h3");
+    gender.forEach(e => {
+        e.addEventListener("click", x => {
+            let getGenderAttribut = x.target.closest("div").getAttribute("data-gender-id");
+            let ajax = new XMLHttpRequest();
+            ajax.addEventListener("readystatechange", () => {
+                if (ajax.readyState == 4 && ajax.status == 200) {
+                    result(ajax.responseText);
+                    const afisareGender = document.querySelector(".count-nr-produse h1")
+                    afisareGender.innerHTML = e.innerHTML;
+                    const mic = document.querySelector(".cel-mai-mic");
+                    mic.addEventListener("click", function () {
+                        let ajax = new XMLHttpRequest();
+                        ajax.addEventListener("readystatechange", () => {
+                            if (ajax.readyState == 4 && ajax.status == 200) {
+                                result(ajax.responseText);
+
+                                targetPreview();
+                                countnrproduse();
+                                alegeMarimeCuloare();
+                                afiseazabutoanefiltrare()
+                                preluareButoaneCuloareSiMarime();
+                                closePreview();
+                                butoaneSortare();
+                            }
+                        });
+                        ajax.open('GET', 'filterbygender.php?mic&gender_id=' + getGenderAttribut, true);
+                        ajax.send();
+                        
+                       
+                    });
+                    const mare = document.querySelector(".cel-mai-mare");
+                    mare.addEventListener("click", function () {
+                        let ajax = new XMLHttpRequest();
+                        ajax.addEventListener("readystatechange", () => {
+                            if (ajax.readyState == 4 && ajax.status == 200) {
+                                result(ajax.responseText);
+
+                                targetPreview();
+                                countnrproduse();
+                                alegeMarimeCuloare();
+                                afiseazabutoanefiltrare()
+                                preluareButoaneCuloareSiMarime();
+                                closePreview();
+                                butoaneSortare();
+                            }
+                        });
+                        ajax.open('GET', 'filterbygender.php?mare&gender_id=' + getGenderAttribut, true);
+                        ajax.send();
+
+
+                    });
+                    targetPreview();
+                    countnrproduse();
+                    alegeMarimeCuloare();
+                    afiseazabutoanefiltrare()
+                    preluareButoaneCuloareSiMarime();
+                    closePreview();
+                    butoaneSortare();
+                }
+            });
+            ajax.open('POST', 'queryDB.php?', true);
+            ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            ajax.send('gender_id_click=' + getGenderAttribut);
+        })
+    })
+}
 function result(result) {
+
     let interogare = JSON.parse(result);
     console.log(interogare)
-    let string = "";
+    let string = " ";
     let afiseazaProd = document.querySelector(".afiseaza-produse");
     interogare.forEach(e => {
-        const returneazaProduse = afisareProduseInPagina(e.product_id, e.gender_id, e.categorie_id, e.imbracaminte_id  ,e.image_url, e.product_name, e.description ,e.price, e.color, e.size)
+        const returneazaProduse = afisareProduseInPagina(e.product_id, e.gender_id, e.categorie_id, e.imbracaminte_id, e.image_url, e.product_name, e.description, e.price, e.color, e.size)
         string += returneazaProduse
     })
     afiseazaProd.innerHTML = string;
@@ -185,33 +315,33 @@ function sorteaza() {
     });
 
 }
-function butoaneSortare(){
-let select = document.querySelectorAll(".select");
-select.forEach(e => {
-    let sorteaza = e.querySelector(".sorteaza");
-    let arrowDown = e.querySelector('.arrow-down');
-    let arrowUp = e.querySelector('.arrow-up');
-    const selectDescriereSortare = e.querySelector(".select-descriere-sortare")
-    selectDescriereSortare.addEventListener("click", function () {
-        sorteaza.classList.toggle("activ")
-        arrowUp.classList.toggle("inactiveaza-arrow");
-        arrowDown.classList.toggle("inactiveaza-arrow");
-        select.forEach(otherselect => {
-            if (otherselect !== e) {
-                otherselect.querySelector(".sorteaza").classList.remove("activ");
-                otherselect.querySelector(".arrow-up").classList.add("inactiveaza-arrow");
-                otherselect.querySelector(".arrow-down").classList.remove("inactiveaza-arrow");
+function butoaneSortare() {
+    let select = document.querySelectorAll(".select");
+    select.forEach(e => {
+        let sorteaza = e.querySelector(".sorteaza");
+        let arrowDown = e.querySelector('.arrow-down');
+        let arrowUp = e.querySelector('.arrow-up');
+        const selectDescriereSortare = e.querySelector(".select-descriere-sortare")
+        selectDescriereSortare.addEventListener("click", function () {
+            sorteaza.classList.toggle("activ")
+            arrowUp.classList.toggle("inactiveaza-arrow");
+            arrowDown.classList.toggle("inactiveaza-arrow");
+            select.forEach(otherselect => {
+                if (otherselect !== e) {
+                    otherselect.querySelector(".sorteaza").classList.remove("activ");
+                    otherselect.querySelector(".arrow-up").classList.add("inactiveaza-arrow");
+                    otherselect.querySelector(".arrow-down").classList.remove("inactiveaza-arrow");
+                }
+            })
+        })
+        document.addEventListener("click", f => {
+            if (!e.contains(f.target)) {
+                sorteaza.classList.remove("activ");
+                arrowDown.classList.remove("inactiveaza-arrow");
+                arrowUp.classList.add("inactiveaza-arrow");
             }
         })
     })
-    document.addEventListener("click", f => {
-        if (!e.contains(f.target)) {
-            sorteaza.classList.remove("activ");
-            arrowDown.classList.remove("inactiveaza-arrow");
-            arrowUp.classList.add("inactiveaza-arrow");
-        }
-    })
-})
 }
 //Sortare
 
@@ -225,24 +355,24 @@ function countnrproduse() {
 
 //Buton filtrare
 function afiseazabutoanefiltrare() {
-let filtrareProduse = document.querySelector(".descriere-filtrare");
-filtrareProduse.addEventListener("click", e => {
+    let filtrareProduse = document.querySelector(".descriere-filtrare");
+    filtrareProduse.addEventListener("click", e => {
 
-    let continutFiltrare = document.querySelector(".continut-filtrare");
-    continutFiltrare.classList.toggle("activ");
-    let arrowUp = document.querySelector(".descriere-filtrare .arrow-up");
-    arrowUp.classList.toggle("inactiveaza-arrow");
-    let arrowDown = document.querySelector(".descriere-filtrare .arrow-down");
-    arrowDown.classList.toggle("inactiveaza-arrow");
-    document.addEventListener("click", f => {
-        if (!filtrareProduse.contains(f.target) && !continutFiltrare.contains(f.target)) {
-            continutFiltrare.classList.remove("activ");
-            arrowDown.classList.remove("inactiveaza-arrow");
-            arrowUp.classList.add("inactiveaza-arrow");
-        }
+        let continutFiltrare = document.querySelector(".continut-filtrare");
+        continutFiltrare.classList.toggle("activ");
+        let arrowUp = document.querySelector(".descriere-filtrare .arrow-up");
+        arrowUp.classList.toggle("inactiveaza-arrow");
+        let arrowDown = document.querySelector(".descriere-filtrare .arrow-down");
+        arrowDown.classList.toggle("inactiveaza-arrow");
+        document.addEventListener("click", f => {
+            if (!filtrareProduse.contains(f.target) && !continutFiltrare.contains(f.target)) {
+                continutFiltrare.classList.remove("activ");
+                arrowDown.classList.remove("inactiveaza-arrow");
+                arrowUp.classList.add("inactiveaza-arrow");
+            }
 
+        });
     });
-});
 }
 
 function alegeMarimeCuloare() {
@@ -372,6 +502,39 @@ function targetFromExterior() {
             afiseazaProd.style.display = "flex";
             preview.style.display = "flex";
         }
+       
     })
+    getDataProduse()
+    targetPreview();
+    countnrproduse();
+    alegeMarimeCuloare();
+    afiseazabutoanefiltrare()
+    preluareButoaneCuloareSiMarime();
+    closePreview();
+    butoaneSortare();
 }
 
+
+// //  showResultByTargetCategory();
+// function showResultByTargetCategory() {
+//     let categorie = document.querySelectorAll(".lista-start h3");
+//     categorie.forEach(e => {
+//         e.addEventListener("click", x => {
+//             let getCategorieAttribut = x.target.closest("div").getAttribute("data-gender-id");
+//             const genderbyID = x.target.closest("div").closest("[data-gender-id]").getAttribute("data-gender-id");
+//             console.log(genderbyID, getCategorieAttribut)
+//             let ajax = new XMLHttpRequest();
+//             ajax.addEventListener("readystatechange", () => {
+//                 if (ajax.readyState == 4 && ajax.status == 200) {
+//                     result(ajax.responseText);
+//                     const afisarecategorie = document.querySelector(".count-nr-produse h1")
+//                     afisarecategorie.innerHTML = e.innerHTML;
+
+//                 }
+//             });
+//             ajax.open('POST', 'queryDB.php', true);
+//             ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+//             ajax.send('gender_id_click=' + genderbyID + "&categorie_id_click=" + getCategorieAttribut);
+//         })
+//     })
+// }
