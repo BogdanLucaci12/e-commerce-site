@@ -32,9 +32,15 @@ header {
     transition: 150ms transform ease-in-out;
     transform: translateX(0);
     z-index: 10;
-
 }
-
+@media screen and (max-width: 500px) {
+    header{
+        height: 9em;
+    }
+    nav{
+        height: 2em;
+    }
+}
 nav {
     width: 100%;
     display: flex;
@@ -72,7 +78,14 @@ nav .logo {
     width: 50%;
     position: relative;
 }
-
+@media screen and (max-width: 500px) {
+    .search-bar{
+        position: absolute;
+        width: 100%;
+        top: 4.5em;
+         margin: .5em;
+    }
+}
 .search-bar input {
     width: 80%;
     margin: auto;
@@ -99,7 +112,12 @@ nav .logo {
     padding: 1em;
     display: none;
 }
+@media screen and (max-width: 500px) {
+ .result-bar{
+    width: 95%;
+ }
 
+}
 .container-afisare-result {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(10vw, 1fr));
@@ -107,6 +125,13 @@ nav .logo {
     gap: 1em;
 }
 
+@media screen and (max-width: 500px) {
+    .container-afisare-result {
+       display: grid;
+       grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));;
+    }
+
+}
 .titlu-result-bar {
     margin-bottom: .5em;
 }
@@ -118,10 +143,11 @@ nav .logo {
 
 .result-descriere {
     display: grid;
+    margin-left: 1em;
 }
 
 .result-bar img {
-    max-width: 6vw;
+   width: 6vw;
 }
 
 .rezultat .pret {
@@ -131,7 +157,12 @@ nav .logo {
 .rezultat .pret p {
     margin-left: .2em;
 }
-
+@media screen and (max-width: 500px) {
+    .result-bar img{
+        width: 5em;
+        height: 5em;
+    }
+}
 .itemsnavbar {
     margin: 0 auto;
     display: flex;
@@ -142,7 +173,7 @@ nav .logo {
 
 .itemsnavbar div {
     margin: auto 1em;
-    padding: .60em;
+    padding: .6em;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -151,7 +182,18 @@ nav .logo {
 }
 
 
-
+@media screen and (max-width: 500px) {
+   .itemsnavbar div{
+    padding: 0;
+    margin: auto .3em;
+   }
+   .ajutor,
+   .locatii {
+    position: absolute;
+    display: none;
+    opacity: 0;
+   }
+}
 .itemsnavbar div p {
     margin-top: .4em;
 }
@@ -167,7 +209,11 @@ nav .logo {
     border-radius: 40%;
     z-index: 25;
 }
-
+@media screen and (max-width: 500px) {
+   .count-favs{
+    top:-30%;
+   }
+}
 nav .cart {
     height: 5em;
     background-color: #e8e8e8;
@@ -179,7 +225,12 @@ nav .cart {
     cursor: pointer;
     z-index: 10;
 }
-
+@media screen and (max-width: 500px) {
+nav .cart{
+    width: 18%;
+    /* margin-right: 0; */
+}
+}
 .count-cart {
     position: absolute;
     font-size: 1.2em;
@@ -191,7 +242,11 @@ nav .cart {
     border-radius: 40%;
     z-index: 25;
 }
-
+@media screen and (max-width: 500px) {
+    .count-cart{
+        transform: translateX(110%);
+    }
+}
 .dropdownmenu-info {
     position: absolute;
     height: 25em;
@@ -267,7 +322,11 @@ nav .cart {
     right: 10.6em;
     text-align: center;
 }
-
+@media screen and (max-width:500px){
+.dropdownmenu-myaccount{
+    right: .5em;
+}
+}
 .dropdownmenu-myaccount div {
     margin: .85em 0;
 }
@@ -360,7 +419,11 @@ nav .cart {
     display: block;
     color: #fff
 }
-
+@media screen and (max-width:500px) {
+    .meniuprincipal {
+        width: 80vw;
+    }
+}
 .meniuprincipal div {
     padding: 1em;
     cursor: pointer;
@@ -397,7 +460,12 @@ nav .cart {
     transform: translateX(-20vw);
     transition: transform 150ms ease-in-out;
 }
-
+@media screen and (max-width:500px){
+.meniutoatesporturile{
+    transform: translateX(-80vw);
+    width: 80vw;
+}
+}
 .meniutoatesporturile div:first-child {
     width: 100%;
     display: flex;
@@ -424,7 +492,11 @@ nav .cart {
     height: 25vh;
     text-align: center;
 }
-
+@media screen and (max-width:500px) {
+.meniutoatesporturile div:nth-child(2){
+width: 80vw;
+}
+}
 .meniutoatesporturile div:nth-child(2) h3 {
     margin: 1em;
 }
@@ -439,9 +511,13 @@ nav .cart {
     width: 100%;
     display: flex;
     height: auto;
-    margin-top: 3em;
+    margin-top: 5em;
 }
-
+@media screen and (max-width:500px) {
+    .search-bar-meniu-toate-sporturile {
+    margin-top: 4em;
+    }
+}
 .search-bar-meniu-toate-sporturile form {
     display: flex;
     width: 100%;
@@ -500,7 +576,12 @@ nav .cart {
     transform: translateX(-20vw);
     transition: transform 150ms ease-in-out;
 }
-
+@media screen and (max-width:500px) {
+    .meniu{
+        transform: translateX(-180vw);
+        width: 80vw;
+    }
+}
 .titlu {
 
     font-size: 1em;
@@ -538,7 +619,11 @@ nav .cart {
     border-top: 1px solid #2b2b2b;
     border-bottom: 1px solid #2b2b2b;
 }
-
+@media screen and (max-width:500px) {
+.meniu :nth-of-type(n+2) {
+        width: 79vw;
+    }
+}
 .meniu :nth-of-type(n+2):hover {
     background: linear-gradient(to right, #fff, #e8e8ee);
     cursor: pointer;
@@ -647,4 +732,10 @@ nav .cart {
     background-color: #fff;
    padding: .5em;
    display: none;
+}
+@media screen and (max-width: 500px){
+    .in-development{
+        right: 5em;
+        top: 10em;
+    }
 }

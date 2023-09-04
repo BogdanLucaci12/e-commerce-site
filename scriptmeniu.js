@@ -14,13 +14,21 @@ butonmeniu.addEventListener("click", e => {
     }
 })
 function deschidemeniul(){
+
 const header=document.querySelector("header");
-header.style.transform="translateX(20vw)";
-const main=document.querySelector("main")
-main.style.transform="translateX(20vw)"
+const main=document.querySelector("main");
+    if (window.matchMedia("(max-width: 500px)").matches) {
+        // Dacă ecranul are o lățime de maxim 500px
+        header.style.transform = "translateX(80vw)";
+        main.style.transform = "translateX(80vw)";
+    } else {
+        // Altfel, revineți la valorile implicite
+        header.style.transform = "translateX(20vw)";
+        main.style.transform = "translateX(20vw)";
+    }
+
 main.style.opacity=".5"
-// body.style.overflowY="hidden";
-// body.style.overflowX="hidden"; 
+
 const meniupreview=document.querySelector(".meniupreview");
 meniupreview.style.display="block"
 meniuiconbars.style.display="none"
@@ -57,23 +65,32 @@ function deschidetoatesporturile(){
     meniutoatesporturile.style.transform="translateX(0)"
 }
 function inchidetoatesporturile(){
-
     const meniutoatesporturile = document.querySelector(".meniutoatesporturile");
-    meniutoatesporturile.style.transform="translateX(-20vw)"
+    if (window.matchMedia("(max-width: 500px)").matches) {
+        meniutoatesporturile.style.transform = "translateX(-80vw)"
+    } else {
+        meniutoatesporturile.style.transform = "translateX(-20vw)"
+    }
 }
 //afisare continut meniu barbati
 let divbarbati=meniuprincpaldiv[1];
+console.log(divbarbati)
 let arrowleftbarbati = document.querySelector(".barbati .titlu img");
 divbarbati.addEventListener("click", afiseazameniubarbati)
 arrowleftbarbati.addEventListener("click", inchidemeniubarbati)
 function afiseazameniubarbati(){
     const meniulbarbati=document.querySelector(".barbati")
+    console.log(meniulbarbati)
     meniulbarbati.style.transform="translateX(0)"
 }
 inchidemeniubarbati()
 function inchidemeniubarbati(){
     const meniulbarbati = document.querySelector(".barbati");
-    meniulbarbati.style.transform="translateX(-20vw)"
+    if (window.matchMedia("(max-width: 500px)").matches) {
+        meniulbarbati.style.transform = "translateX(-80vw)"
+    } else {
+        meniulbarbati.style.transform = "translateX(-20vw)"
+    }
 
 }
 // afiseaza meniu femei
@@ -87,7 +104,11 @@ let arrowleftfemei = document.querySelector(".femei .titlu img");
  }
  function inchidemeniufemei(){
      const meniulfemei = document.querySelector(".femei");
-     meniulfemei.style.transform = "translateX(-20vw)"
+     if (window.matchMedia("(max-width: 500px)").matches) {
+         meniulfemei.style.transform = "translateX(-80vw)"
+     } else {
+         meniulfemei.style.transform = "translateX(-20vw)"
+     }
  }
 
  //afiseaza meniu unisex
@@ -102,7 +123,12 @@ function afiseazameniuunisex() {
 inchidemeniuunisex()
 function inchidemeniuunisex() {
     const meniulunisex = document.querySelector(".unisex");
-    meniulunisex.style.transform = "translateX(-20vw)"
+    if (window.matchMedia("(max-width: 500px)").matches) {
+        meniulunisex.style.transform = "translateX(-80vw)"
+    } else {
+        meniulunisex.style.transform = "translateX(-20vw)"
+    }
+   
 
 }
 targetMeniu()

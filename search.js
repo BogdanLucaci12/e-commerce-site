@@ -7,8 +7,9 @@ text.addEventListener("input", () => {
     getData(text.value);
 });
 const getData = (textValue) => {
-    if (textValue.trim() == "") {
+    if (textValue.trim() == "" ) {
         resultBar.style.display = "none";
+        closeResultBar()
     }
     else {
         resultBar.style.display = "block";
@@ -61,5 +62,15 @@ function getProductid() {
             console.log(id);
             window.location.href = `produse.php?id=${id}`;
         })
+    })
+}
+closeResultBar()
+function closeResultBar(){
+    const searchBar=document.querySelector(".search-bar");
+    document.addEventListener("click", f=>{
+        console.log(f)
+        if(!searchBar.contains(f.target)){
+             resultBar.style.display="none";
+        }
     })
 }

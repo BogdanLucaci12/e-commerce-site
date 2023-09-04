@@ -23,7 +23,7 @@ session_start();
   <div class="meniupreview">
     <div class="meniutoatesporturile">
       <div><img src="icon/left-arrow.png" alt="">
-        <h2><i>Toate sporturile</i></h2>
+        <h2><i>Toate brandurile</i></h2>
       </div>
       <div><img src="icon/sports-trophy-on-a-banner-with-olive-branches-svgrepo-com.png" alt="">
         <h3>Cauta brandul pe care dorești să-l achizitionezi iar noi îți vom genera produsele necesare!</h3>
@@ -32,7 +32,7 @@ session_start();
         <form role="search">
           <!-- <a></a> -->
           <label for="sport"><img src="icon/magnifying-glass-backup-svgrepo-com.png" alt=""></label>
-          <input type="search" name="sport" id="" placeholder="Cauta sportul dorit" />
+          <input type="search" name="sport" id="" placeholder="Cauta brandul dorit" />
 
         </form>
       </div>
@@ -159,14 +159,14 @@ WHERE p.gender_id = '3'";
           </div>
         </div>
       </div>
-      </div>
+      
       <div class="itemsnavbar">
         <div class="ajutor">
           <i class="fa-solid fa-circle-info"></i>
           <p>Ajutor</p>
         </div>
 
-        <div>
+        <div class="locatii">
           <i class="fa-solid fa-map-location-dot"></i>
           <p>Locatii</p>
         </div>
