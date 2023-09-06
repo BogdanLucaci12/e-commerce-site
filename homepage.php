@@ -1,5 +1,5 @@
 <?php
-require 'conectare.php';
+include 'conectare.php';
 session_start();
 ?>
 <!DOCTYPE html>

@@ -4,18 +4,22 @@
     box-sizing: border-box;
 }
 
-html {
-
+html{
+       
     color: #2b2b2b;
 }
-
+@media screen and (max-width: 500px) {
+   html{
+    overscroll-behavior-x:none;
+   }
+}
 body {
     font-family: 'Cormorant Garamond', serif;
     font-family: 'Dosis', sans-serif;
     font-family: 'Montserrat', sans-serif;
     z-index: 0;
     position: relative;
-    overflow-x: hidden;
+    overflow-x:hidden ;
 }
 
 main {
