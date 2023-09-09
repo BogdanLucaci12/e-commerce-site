@@ -176,7 +176,12 @@ function payment() {
         
     }
     else {
-        cartGol.style.display = "flex";
+        if (window.matchMedia("(max-width: 500px)").matches) {
+            cartGol.style.display = "block";
+        } else {
+            cartGol.style.display = "flex";
+            
+        }
         cartPlin.style.display = "none";
     }
 }

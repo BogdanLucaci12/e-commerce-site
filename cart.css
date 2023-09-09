@@ -11,7 +11,19 @@ section {
     align-items: center;
     /* display flex trebe aici */
 }
-
+@media screen and (max-width: 500px) {
+    .section-cart-gol{
+        display: block;
+        width: 100%;
+        margin: 1em auto;
+    }
+    .imagine-section-cart-gol{
+        text-align: center;
+    }
+    .descriere-section-cart-gol{
+        text-align: center;
+    }
+}
 .section-cart-plin {
     display: none;
     position: relative;
@@ -30,7 +42,12 @@ section {
     width: 90%;
     margin: 0 auto;
 }
-
+@media screen and (max-width:500px) {
+    .main-div-cart-plin {
+            display: block;
+            width: 94%;    
+        }
+}
 .produse-cart-plata {
 
     width: 63%;
@@ -40,7 +57,12 @@ section {
     background-color: #ffffff;
     box-shadow: 0px 1px 10px 10px rgba(0, 0, 0, 0.1);
 }
-
+@media screen and (max-width:500px) {
+.produse-cart-plata {
+        width:100%;
+        padding: .4em;
+    }
+}
 .header-produse-cart {
     display: flex;
     flex-direction: row;
@@ -48,7 +70,12 @@ section {
     border-bottom: 1px solid #e8e8e8;
     padding-bottom: .5em;
 }
-
+@media screen and (max-width:500px) {
+.header-produse-cart {
+        width: 100%;
+        font-size: .6em;
+}
+}
 .header-produse-cart h4 {
     margin: 0 .3em;
 }
@@ -130,7 +157,12 @@ section {
     height: 1.5em;
     cursor: pointer;
 }
-
+@media screen and (max-width: 500px) {
+    .div-right img{
+        width: 1em;
+        height: 1em;
+    }
+}
 .div-right .cantitate-produs-cart-plata {
     /* border: 1px solid black; */
     width: 100%;
@@ -143,7 +175,12 @@ section {
 .div-right .cantitate-produs-cart-plata h2 {
     margin: 0 .5em;
 }
-
+@media screen and (max-width: 500px) {
+    .div-right .cantitate-produs-cart-plata h2 {
+            margin: 0 .35em;
+            font-size: 1em;
+        }
+}
 .div-right .pret-produs-cart-plata {
     display: flex;
     flex-direction: column;
@@ -153,11 +190,12 @@ section {
 .div-right .pret-initial-produs {
     opacity: 0;
     display: flex;
-    font-size: .8em;
+    font-size: .7em;
 }
 
 .pret-produs-per-cantitate {
     display: flex;
+    font-size: .9em;
 }
 
 .finalizeaza-comanda {
@@ -167,7 +205,12 @@ section {
     flex-direction: column;
     width: 33%;
 }
-
+@media screen and (max-width:500px){
+.finalizeaza-comanda {
+    width: 100%;
+    margin-top: 1em;
+}
+}
 
 
 .finalizeaza-comanda .subtotal-total {

@@ -12,6 +12,11 @@ html{
    html{
     overscroll-behavior-x:none;
    }
+   * {
+       margin: 0;
+       padding: 0;
+       box-sizing: border-box;
+   }
 }
 body {
     font-family: 'Cormorant Garamond', serif;
@@ -189,7 +194,7 @@ nav .logo {
 @media screen and (max-width: 500px) {
    .itemsnavbar div{
     padding: 0;
-    margin: auto .3em;
+    margin: auto .1em;
    }
    .ajutor,
    .locatii {
@@ -231,7 +236,8 @@ nav .cart {
 }
 @media screen and (max-width: 500px) {
 nav .cart{
-    width: 18%;
+   max-width: 20%;
+   min-width: 15%;
     /* margin-right: 0; */
 }
 }
@@ -409,7 +415,7 @@ nav .cart{
     height: 90%;
     position: fixed;
     display: none;
-
+    position: relative;
 }
 
 .meniuprincipal {

@@ -1,16 +1,7 @@
 <?php
-// require 'conectare.php';
+require 'conectare.php';
 session_start();
-if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
-    $url = "https://";
-} else {
-    $url = 'http://';
-    $url .= $_SERVER['HTTP_HOST'];
-    $url .= $_SERVER['REQUEST_URI'];
-    $url;
-}
-$page = $url;
-$sec = "";
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,7 +27,7 @@ $sec = "";
     <div class="meniupreview">
         <div class="meniutoatesporturile">
             <div><img src="icon/left-arrow.png" alt="">
-                <h2><i>Toate sporturile</i></h2>
+                <h2><i>Toate brandurile</i></h2>
             </div>
             <div><img src="icon/sports-trophy-on-a-banner-with-olive-branches-svgrepo-com.png" alt="">
                 <h3>Cauta brandul pe care dorești să-l achizitionezi iar noi îți vom genera produsele necesare!</h3>
@@ -45,7 +36,7 @@ $sec = "";
                 <form role="search">
                     <!-- <a></a> -->
                     <label for="sport"><img src="icon/magnifying-glass-backup-svgrepo-com.png" alt=""></label>
-                    <input type="search" name="sport" id="" placeholder="Cauta sportul dorit" />
+                    <input type="search" name="sport" id="" placeholder="Cauta brandul dorit" />
 
                 </form>
             </div>
@@ -55,35 +46,76 @@ $sec = "";
             <div class="titlu"><img src="icon/left-arrow.png" alt="">
                 <h2>Barbati</h2>
             </div>
-            <div>
-                <p>Imbrăcăminte</p><img src="icon/arrow-right-for-menu.png" alt="">
-            </div>
-            <div>
-                <p>Pantofi</p><img src="icon/arrow-right-for-menu.png" alt="">
-            </div>
-            <div>
-                <p>Accesorii</p><img src="icon/arrow-right-for-menu.png" alt="">
-            </div>
-            <div>
-                <p>Branduri</p><img src="icon/arrow-right-for-menu.png" alt="">
-            </div>
+            <?php
+            $sqlgender = "SELECT c.categorie_name, c.categorie_id FROM products p
+INNER JOIN categorie c ON p.categorie_id = c.categorie_id
+WHERE p.gender_id = '1'";
+            $querygender = mysqli_query($conectare, $sqlgender);
+            $categorii = array();
+            while ($rowcategori = mysqli_fetch_array($querygender)) {
+                $categorii[] = array(
+                    "categorie_id" => $rowcategori['categorie_id'],
+                    "categorie_name" => $rowcategori['categorie_name']
+                );
+            }
+            $categorii_unice = array_unique($categorii, SORT_REGULAR);
+            ?>
+
+            <?php foreach ($categorii_unice as $categorie) { ?>
+                <div class="alege-data" data-category-id="<?php echo $categorie['categorie_id'] ?>">
+                    <p><?php echo $categorie['categorie_name'] ?></p><img src="icon/arrow-right-for-menu.png" alt="">
+                </div>
+            <?php } ?>
         </div>
         <div class="meniu femei">
             <div class="titlu"><img src="icon/left-arrow.png" alt="">
                 <h2>Femei</h2>
             </div>
-            <div>
-                <p>Imbrăcăminte</p><img src="icon/arrow-right-for-menu.png" alt="">
+            <?php
+            $sqlgender = "SELECT c.categorie_name, c.categorie_id FROM products p
+INNER JOIN categorie c ON p.categorie_id = c.categorie_id
+WHERE p.gender_id = '2'";
+            $querygender = mysqli_query($conectare, $sqlgender);
+            $categorii = array();
+            while ($rowcategori = mysqli_fetch_array($querygender)) {
+                $categorii[] = array(
+                    "categorie_id" => $rowcategori['categorie_id'],
+                    "categorie_name" => $rowcategori['categorie_name']
+                );
+            }
+            $categorii_unice = array_unique($categorii, SORT_REGULAR);
+            ?>
+
+            <?php foreach ($categorii_unice as $categorie) { ?>
+                <div class="alege-data" data-category-id="<?php echo $categorie['categorie_id'] ?>">
+                    <p><?php echo $categorie['categorie_name'] ?></p><img src="icon/arrow-right-for-menu.png" alt="">
+                </div>
+            <?php } ?>
+        </div>
+        <div class="meniu unisex">
+            <div class="titlu"><img src="icon/left-arrow.png" alt="">
+                <h2>Unisex</h2>
             </div>
-            <div>
-                <p>Pantofi</p><img src="icon/arrow-right-for-menu.png" alt="">
-            </div>
-            <div>
-                <p>Accesorii</p><img src="icon/arrow-right-for-menu.png" alt="">
-            </div>
-            <div>
-                <p>Branduri</p><img src="icon/arrow-right-for-menu.png" alt="">
-            </div>
+            <?php
+            $sqlgender = "SELECT c.categorie_name, c.categorie_id FROM products p
+INNER JOIN categorie c ON p.categorie_id = c.categorie_id
+WHERE p.gender_id = '3'";
+            $querygender = mysqli_query($conectare, $sqlgender);
+            $categorii = array();
+            while ($rowcategori = mysqli_fetch_array($querygender)) {
+                $categorii[] = array(
+                    "categorie_id" => $rowcategori['categorie_id'],
+                    "categorie_name" => $rowcategori['categorie_name']
+                );
+            }
+            $categorii_unice = array_unique($categorii, SORT_REGULAR);
+            ?>
+
+            <?php foreach ($categorii_unice as $categorie) { ?>
+                <div class="alege-data" data-category-id="<?php echo $categorie['categorie_id'] ?>">
+                    <p><?php echo $categorie['categorie_name'] ?></p><img src="icon/arrow-right-for-menu.png" alt="">
+                </div>
+            <?php } ?>
         </div>
 
         <div class="meniuprincipal">
@@ -91,39 +123,29 @@ $sec = "";
                 <h3>Toate Brandurile</h3><img src="icon/arrow-right-for-menu.png" alt="">
 
             </div>
-            <div>
-                <h3>Barbati</h3><img src="icon/arrow-right-for-menu.png" alt="">
-            </div>
-            <div>
-                <h3>Femei</h3><img src="icon/arrow-right-for-menu.png" alt="">
-            </div>
-            <div>
-                <h3>Copii</h3><img src="icon/arrow-right-for-menu.png" alt="">
-            </div>
-            <div>
-                <h3>Accesori</h3><img src="icon/arrow-right-for-menu.png" alt="">
-            </div>
-            <div>
-                <h3>Articole army</h3><img src="icon/arrow-right-for-menu.png" alt="">
-            </div>
-
+            <?php
+            $sqlgender = "SELECT * FROM gender";
+            $querygender = mysqli_query($conectare, $sqlgender);
+            while ($rowgender = mysqli_fetch_array($querygender)) {
+            ?>
+                <div data-gender-id="<?php echo $rowgender['gender_id'] ?>">
+                    <h3><?php echo $rowgender['gender_name'] ?></h3><img src="icon/arrow-right-for-menu.png" alt="">
+                </div>
+            <?php } ?>
         </div>
     </div>
 
     <header>
-
         <nav>
             <div>
-
                 <button class="butonmeniu">
                     <i class="fa-solid fa-bars meniudeschis"></i>
                     <i class="fa-solid fa-x meniuinchis" style="display: none"></i>
                     <p>Meniu</p>
                 </button>
-
             </div>
             <div class="logo">
-                <a href="homepage.php">
+                <a href="homepage.html">
                     <img src="logo.png" alt="" width="80px" height="80px" /></a>
             </div>
             <div class="search-bar">
@@ -141,14 +163,14 @@ $sec = "";
                     </div>
                 </div>
             </div>
+
             <div class="itemsnavbar">
                 <div class="ajutor">
                     <i class="fa-solid fa-circle-info"></i>
                     <p>Ajutor</p>
-
                 </div>
 
-                <div>
+                <div class="locatii">
                     <i class="fa-solid fa-map-location-dot"></i>
                     <p>Locatii</p>
                 </div>
@@ -160,6 +182,7 @@ $sec = "";
                     <p class="count-favs">0</p>
                     <i class="fa-regular fa-star favorite"></i>
                     <p>Favorite</p>
+
                 </div>
             </div>
             <div class="cart">
@@ -221,7 +244,7 @@ $sec = "";
                         foarte simplu!</p>
                 </div>
                 <div><img src="logo.png" alt="" width="300px" height="200px"></div>
-                <div><a href="#">Conecteaza-te</a></div>
+                <div><a href="#">In development...stay closed :)</a></div>
             </div>
             <!-- Meniul dropdown pentru iconita cart -->
             <div class="dropdownmenu-cart">
@@ -237,19 +260,6 @@ $sec = "";
                     <div class="adauga-produs-cart">
 
                     </div>
-                    <!-- <div class="continut-cart">
-                            <div class="imagine-produs-cart">
-                                <img src="${imagine}" alt="">
-                            </div>
-                            <div class="descriere-produs-cart">
-                                <div class="titlu-produs-cart">
-                                    <p>${titlu}</p>
-                                </div>
-                                <div class="pret-produs-cart">
-                                    <p>${pret} lei</p>
-                                </div>
-                            </div>
-                        </div> -->
                     <div class="total">
 
                         <div class="total-articole">
@@ -289,48 +299,7 @@ $sec = "";
                         <div class="produsele-cosul-tau">
                             <div class="data-livrare">
                             </div>
-                            <!-- <div class="produsele-din-cart">
-                                <div class="div-left">
-                                    <div class="imagine-produs-cart-plata"><img src="produse/Nike Jordan Pantofi.jpg" alt=""></div>
-                                    <div class="afisarea-produsului">
-                                        <div class="produs-cart-plata">
-                                            <div class="titlu-produs-cart-plata">
-                                                <h3>Nike</h3>
-                                            </div>
-                                            <div class="descriere-produs-cart-plata">
-                                                <p>Jordan Retro 6</p>
-                                            </div>
-                                            <div class="marime-produs-cart-plata">
-                                                <p>M</p>
-                                            </div>
-                                            <div class="culoare-produs-cart-plata">
-                                                <p>Galben</p>
-                                            </div>
-                                            <div class="cantitate-produs-cart-plata">x
-                                                <p class="sumar-cantitate-produs-cart-plata">1</p>
-                                            </div>
-                                        </div>
-                                        <div class="sterge-produs-cart-plata"><button>Sterge produsul</button></div>
-                                    </div>
-                                </div>
-
-                                <div class="div-right">
-                                    <div class="cantitate-produs-cart-plata"><img class="plus" src="icon/plus-square-svgrepo-com.png" alt="">
-                                        <h2 class="cantitatea-dorita"></h2>
-                                        <img class="minus" src="icon/minus-square-svgrepo-com.png" alt="">
-                                    </div>
-                                    <div class="pret-produs-cart-plata">
-                                        <div class="pret-produs-per-cantitate">
-                                            <p id="pret-produs-per-cantitate"></p>
-                                            <p>lei</p>
-                                        </div>
-                                        <div class="pret-initial-produs">
-                                            <p id="pret-initial-produs">42</p>
-                                            <p>lei fiecare</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> -->
+                           
                         </div>
                     </div>
                 </div>
@@ -379,7 +348,6 @@ $sec = "";
                 </div>
             </div>
         </section>
-
         <footer>
             <div class="retur">
                 <div>
@@ -422,7 +390,7 @@ $sec = "";
                     <h4>Abonează-te la newsletter pentru a primii oferte si promoții</h4>
                 </div>
                 <div>
-                    <form action="">
+                    <form action="automail.php" method="post">
                         <div class="checkbox">
                             <div>
                                 <label for="femeie"><input type="radio" name="gen" id="femeie" value="femeie">
@@ -443,13 +411,13 @@ $sec = "";
                     </form>
                 </div>
                 <div>
-                    <p>*Doresc să primesc pe e-mail informații despre vouchere, oferte și ultimele tendințe din modă.
-                    </p>
+                    <p>*Doresc să primesc pe e-mail informații despre vouchere, oferte și ultimele tendințe din modă.</p>
                     <p>Te poți dezabona oricând vrei, gratuit.</p>
                 </div>
             </div>
             <div class="contact-section">
                 <div class="contact-section-first-div">
+
                     <div class="footer-main-div">
                         <div class="footer-logo"><img src="logo.png" alt="">
                         </div>
@@ -461,21 +429,21 @@ $sec = "";
                         </div>
                     </div>
                     <div class="relatii-clienti">
-                        <h3>RELAȚII CU CLIENȚII</h3>
+                        <div>
+                            <h3>RELAȚII CU CLIENȚII</h3>
 
-                        <p>Zonă de livrare</p>
-                        <p>Ajutor și contact</p>
-                        <p>Protecția consumatorului</p>
-
-                    </div>
-                    <div class="relatii-clienti">
-                        <h3>CUMPĂRĂTURI SIGURE</h3>
-                        <p>Datele tale sunt în siguranță la noi</p>
+                            <p>Zonă de livrare</p>
+                            <p>Ajutor și contact</p>
+                            <p>Protecția consumatorului</p>
+                        </div>
+                        <div>
+                            <h3>CUMPĂRĂTURI SIGURE</h3>
+                            <p>Datele tale sunt în siguranță la noi</p>
+                        </div>
                     </div>
                 </div>
                 <div class="note">
-                    <p>*Livrare gratuită pentru comenzile de peste 99,90 lei, în caz contrar livrarea costă 9,90 lei.
-                    </p>
+                    <p>*Livrare gratuită pentru comenzile de peste 99,90 lei, în caz contrar livrarea costă 9,90 lei.</p>
                     <p>**Toate prețurile includ TVA.</p>
                 </div>
             </div>
@@ -494,7 +462,10 @@ $sec = "";
                     <p>2023 Clothes For All ECommerce coporation</p>
                 </div>
             </div>
+            </div>
         </footer>
+
+
     </main>
 
     <script src="scriptnavbar.js"></script>

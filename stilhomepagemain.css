@@ -151,6 +151,12 @@ section{
     
     height: 20vh;
 }
+@media screen and (max-width:500px) {
+    .logo-container{
+        width: 100vw;
+        height: 15vh;
+    }
+}
 .logo-container::before{
     position: absolute;
     z-index: 1;

@@ -7,7 +7,8 @@ session_start();
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale = 1.0, 
+maximum-scale=1.0, user-scalable=no" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="stylesheet" href="stilhomepage.css" />
@@ -159,7 +160,7 @@ WHERE p.gender_id = '3'";
           </div>
         </div>
       </div>
-      
+
       <div class="itemsnavbar">
         <div class="ajutor">
           <i class="fa-solid fa-circle-info"></i>
@@ -431,6 +432,7 @@ WHERE p.gender_id = '3'";
       </div>
       <div class="contact-section">
         <div class="contact-section-first-div">
+
           <div class="footer-main-div">
             <div class="footer-logo"><img src="logo.png" alt="">
             </div>
@@ -442,16 +444,17 @@ WHERE p.gender_id = '3'";
             </div>
           </div>
           <div class="relatii-clienti">
-            <h3>RELAȚII CU CLIENȚII</h3>
+            <div>
+              <h3>RELAȚII CU CLIENȚII</h3>
 
-            <p>Zonă de livrare</p>
-            <p>Ajutor și contact</p>
-            <p>Protecția consumatorului</p>
-
-          </div>
-          <div class="relatii-clienti">
-            <h3>CUMPĂRĂTURI SIGURE</h3>
-            <p>Datele tale sunt în siguranță la noi</p>
+              <p>Zonă de livrare</p>
+              <p>Ajutor și contact</p>
+              <p>Protecția consumatorului</p>
+            </div>
+            <div>
+              <h3>CUMPĂRĂTURI SIGURE</h3>
+              <p>Datele tale sunt în siguranță la noi</p>
+            </div>
           </div>
         </div>
         <div class="note">
@@ -473,6 +476,7 @@ WHERE p.gender_id = '3'";
           <p>&#169;</p>
           <p>2023 Clothes For All ECommerce coporation</p>
         </div>
+      </div>
       </div>
     </footer>
 

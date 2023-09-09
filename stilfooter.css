@@ -1,7 +1,7 @@
 footer {
     display: block;
     width: 100vw;
-    height: 100vh;
+    height: auto;
 }
 
 footer .retur {
@@ -37,6 +37,25 @@ footer .retur .icon img {
     height: 3em;
 }
 
+@media screen and (max-width: 500px) {
+    footer .retur .icon img {
+        width: 2em;
+        height: 2em;
+    }
+
+    footer .retur {
+        font-size: .9em;
+    }
+
+    footer .retur div .descriere {
+        margin-left: .5em;
+    }
+
+    footer .retur div {
+        justify-content: space-evenly;
+    }
+}
+
 footer .pay-icon {
     height: 8vh;
     width: 100%;
@@ -56,20 +75,24 @@ footer .newsletter {
     margin: auto;
     height: 40vh;
     width: 70vw;
-
     display: grid;
-
     justify-content: center;
     align-items: center;
 }
 
-footer .newsletter div {
+@media screen and (max-width:500px) {
+    footer .newsletter {
+        height: auto;
+        width: 100vw;
+        padding: 1em;
+    }
+}
 
+footer .newsletter div {
     text-align: center;
 }
 
 footer .newsletter div:nth-child(2) {
-
     margin: auto;
 }
 
@@ -153,6 +176,12 @@ footer input[type=email] {
     cursor: text;
 }
 
+@media screen and (max-width: 500px) {
+    footer input[type=email] {
+        width: 100vw;
+    }
+}
+
 footer input[type=email]:hover {
     border: 1px solid #2b2b2b;
 }
@@ -194,6 +223,7 @@ footer .newsletter form div:nth-child(3) button {
 
 footer .newsletter div:nth-child(3) {
     color: #bababa;
+    margin-top: .8em;
 }
 
 footer .contact-section {
@@ -202,23 +232,51 @@ footer .contact-section {
     margin: 1em auto;
 }
 
+@media screen and (max-width:500px) {
+    footer .contact-section {
+        width: 100vw;
+    }
+}
+
 footer .contact-section .contact-section-first-div {
     display: flex;
     position: relative;
-    justify-content: space-between;
-    height: 25vh;
+    justify-content: space-around;
+    height: auto;
+
+
+}
+
+@media screen and (max-width:500px) {
+    footer .contact-section .contact-section-first-div {
+        display: block;
+
+    }
+
 }
 
 footer .contact-section .footer-main-div {
     display: block;
 }
 
+@media screen and (max-width:500px) {
+    footer .contact-section .footer-main-div {
+        display: block;
+        margin: 0 auto;
+        width: 90vw;
+    }
+
+    footer .contact-section .footer-logo {
+
+        text-align: center;
+    }
+}
+
 footer .contact-section .footer-icon {
     display: flex;
     position: relative;
-    justify-content: space-between;
+    justify-content: space-around;
     margin: .5em auto;
-
 }
 
 footer .contact-section .footer-logo img {
@@ -234,8 +292,22 @@ footer .contact-section .footer-icon img {
 }
 
 footer .contact-section .relatii-clienti {
+    display: flex;
+    text-align: center;
+}
+
+@media screen and (max-width: 500px) {
+    footer .contact-section .relatii-clienti {
+        width: 100vw;
+    }
+
+    footer .contact-section .relatii-clienti div p {
+        margin-top: .2em;
+    }
+}
+
+footer .contact-section .relatii-clienti div {
     display: grid;
-    grid-template-rows: repeat(auto-fill, 1fr);
 }
 
 footer .contact-section .relatii-clienti p:hover {
@@ -244,11 +316,11 @@ footer .contact-section .relatii-clienti p:hover {
 
 footer .contact-section .note {
     color: #bababa;
-    margin: 1em 0;
+    margin: 1em;
 }
 
 footer .About {
-    height: 10vh;
+
     width: 100%;
     background-color: #e8e8e8;
     display: grid;
@@ -261,7 +333,24 @@ footer .About div:nth-child(1) {
     position: relative;
     justify-content: space-between;
     width: 75vw;
-    margin: 0 auto;
+    margin: .5em auto;
+    flex-flow: wrap;
+}
+
+@media screen and (max-width: 500px) {
+    footer .About div:nth-child(1) {
+        width: 100vw;
+        justify-content: center;
+        -webkit-box-pack: center;
+    }
+
+    footer .About div:nth-child(1) p {
+        margin: .5em;
+    }
+
+    footer .About div:nth-child(2) p {
+        font-size: 1em;
+    }
 }
 
 footer .About div:nth-child(2) {
