@@ -30,14 +30,17 @@ maximum-scale=1.0, user-scalable=no" />
         <h3>Cauta brandul pe care dorești să-l achizitionezi iar noi îți vom genera produsele necesare!</h3>
       </div>
       <div class="search-bar-meniu-toate-sporturile">
-        <form role="search">
-          <!-- <a></a> -->
+        <form action="" method="POST">
           <label for="sport"><img src="icon/magnifying-glass-backup-svgrepo-com.png" alt=""></label>
-          <input type="search" name="sport" id="" placeholder="Cauta brandul dorit" />
+          <input type="text" name="search-brand" id="search-brand" placeholder="Cauta brandul dorit" />
 
         </form>
       </div>
-      <div class="afiseaza-sporturile"></div>
+      <div class="afiseaza-brand">
+         <h3>Nike</h3>
+         <h3>Champion</h3>
+         <h3>Puma</h3>
+      </div>
     </div>
     <div class="meniu barbati">
       <div class="titlu"><img src="icon/left-arrow.png" alt="">
@@ -142,7 +145,7 @@ WHERE p.gender_id = '3'";
         </button>
       </div>
       <div class="logo">
-        <a href="homepage.html">
+        <a href="homepage.php">
           <img src="logo.png" alt="" width="80px" height="80px" /></a>
       </div>
       <div class="search-bar">
@@ -489,6 +492,7 @@ WHERE p.gender_id = '3'";
   <script src="search.js"></script>
   <script src="scriptMeniuSendToProduse.js"></script>
   <script src="addtocart.js"></script>
+  <script src="searchbrand.js"></script>
 </body>
 
 </html>

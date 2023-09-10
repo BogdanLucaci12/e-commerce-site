@@ -4,7 +4,6 @@ function returnareCategorie(){
    
     function handleH3Click(x) {
         let gendertargetH3 = x.target.closest("div").getAttribute("data-gender-id");
-        console.log(gendertargetH3)
         let ajax = new XMLHttpRequest();
         ajax.addEventListener("readystatechange", () => {
             if (ajax.readyState == 4 && ajax.status == 200) {

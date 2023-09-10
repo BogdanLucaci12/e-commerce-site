@@ -1,33 +1,35 @@
-window.addEventListener('scroll', function () {
-    const listaStart = document.querySelector('.lista-start');
-    const footer = document.querySelector('footer');
-    const listaStartBottom = listaStart.offsetTop + listaStart.offsetHeight;
-    const footerTop = footer.offsetTop;
+// window.addEventListener('scroll', function () {
+//     const listaStart = document.querySelector('.lista-start');
+//     const footer = document.querySelector('footer');
+//     const listaStartBottom = listaStart.offsetTop + listaStart.offsetHeight;
+//     const footerTop = footer.offsetTop;
 
-    if (listaStartBottom >= footerTop) {
-        const distanceToFooter = listaStartBottom - footerTop;
-        listaStart.style.position = 'absolute';
-        listaStart.style.top = (footerTop - listaStart.offsetHeight - distanceToFooter) + 'px';
-    } else {
-        listaStart.style.position = 'sticky';
-        listaStart.style.top = '0';
-    }
-});
+//     if (listaStartBottom >= footerTop) {
+//         const distanceToFooter = listaStartBottom - footerTop;
+//         listaStart.style.position = 'absolute';
+//         listaStart.style.top = (footerTop - listaStart.offsetHeight - distanceToFooter) + 'px';
+//     } else {
+//         listaStart.style.position = 'sticky';
+//         listaStart.style.top = '0';
+//     }
+// });
 
 let size = new Set();
 let size2 = new Set();
 
+let url = new URLSearchParams(window.location.search);
+let gender = url.get("gender_id");
+let category = url.get("category_id");
+let idTgt = url.get("id");
+if (idTgt!==null) {
+     targetFromExterior();
+}
+else {
+showResultFromMeniuPreview()}
 showResultByTargetGender()
-showResultFromMeniuPreview()
-
 function showResultFromMeniuPreview() {
-    let url = new URLSearchParams(window.location.search);
-    let gender = url.get("gender_id");
-    let category = url.get("category_id");
-    if (gender === null && category === null) {
-        getDataProduse()
-    }
-    else {
+
+   
         let ajax = new XMLHttpRequest();
         ajax.addEventListener("readystatechange", () => {
             if (ajax.readyState == 4 && ajax.status == 200) {
@@ -51,6 +53,7 @@ function showResultFromMeniuPreview() {
                 mare.addEventListener("click", () =>{
                     filtrareDesc(gender, category); 
                 });
+
             }
 
         });
@@ -58,7 +61,7 @@ function showResultFromMeniuPreview() {
         ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         ajax.send('gender_id=' + gender + '&category_id=' + category);
     }
-}
+
 
 function getDataProduse() {
     let ajax = new XMLHttpRequest();
@@ -73,6 +76,7 @@ function getDataProduse() {
             mare.addEventListener("click", () => {
                 filtrareDesc()
             })
+            
         }
     });
     ajax.open('POST', 'queryDB.php', true);
@@ -150,7 +154,6 @@ function showResultByTargetGender() {
                         ajax.addEventListener("readystatechange", () => {
                             if (ajax.readyState == 4 && ajax.status == 200) {
                                 result(ajax.responseText);
-
                                 targetPreview();
                                 countnrproduse();
                                 alegeMarimeCuloare();
@@ -171,7 +174,7 @@ function showResultByTargetGender() {
                         ajax.addEventListener("readystatechange", () => {
                             if (ajax.readyState == 4 && ajax.status == 200) {
                                 result(ajax.responseText);
-
+                                  
                                 targetPreview();
                                 countnrproduse();
                                 alegeMarimeCuloare();
@@ -186,6 +189,7 @@ function showResultByTargetGender() {
 
 
                     });
+              
                     targetPreview();
                     countnrproduse();
                     alegeMarimeCuloare();
@@ -483,14 +487,20 @@ function targetPreview() {
             containerPreview.forEach(preview => {
                 let dataPreview = preview.getAttribute("data-target-id");
                 if (dataPreview == dataProdus) {
-                    preview.style.display = "flex";
+                    if (window.matchMedia("(max-width: 500px)").matches){
+                        preview.style.display = "block";
+                    }
+                    else{
+                        preview.style.display = "flex";
+                    }
+                  
                 }
             })
         })
     })
 }
 
-targetFromExterior();
+
 function targetFromExterior() {
     let url = new URLSearchParams(window.location.search);
     let getID = url.get("id")
@@ -504,7 +514,9 @@ function targetFromExterior() {
         }
        
     })
-    getDataProduse()
+    
+    getDataProduse();
+
     targetPreview();
     countnrproduse();
     alegeMarimeCuloare();

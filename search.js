@@ -1,8 +1,6 @@
 
 let text = document.querySelector("#search")
-
 let resultBar = document.querySelector(".result-bar");
-console.log(text.value)
 text.addEventListener("input", () => {
     getData(text.value);
 });
@@ -68,7 +66,6 @@ closeResultBar()
 function closeResultBar(){
     const searchBar=document.querySelector(".search-bar");
     document.addEventListener("click", f=>{
-        console.log(f)
         if(!searchBar.contains(f.target)){
              resultBar.style.display="none";
         }

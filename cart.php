@@ -24,6 +24,7 @@ session_start();
 
 <body>
 
+
     <div class="meniupreview">
         <div class="meniutoatesporturile">
             <div><img src="icon/left-arrow.png" alt="">
@@ -299,7 +300,7 @@ WHERE p.gender_id = '3'";
                         <div class="produsele-cosul-tau">
                             <div class="data-livrare">
                             </div>
-                           
+
                         </div>
                     </div>
                 </div>

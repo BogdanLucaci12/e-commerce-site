@@ -74,7 +74,6 @@ function inchidetoatesporturile(){
 }
 //afisare continut meniu barbati
 let divbarbati=meniuprincpaldiv[1];
-console.log(divbarbati)
 let arrowleftbarbati = document.querySelector(".barbati .titlu img");
 divbarbati.addEventListener("click", afiseazameniubarbati)
 arrowleftbarbati.addEventListener("click", inchidemeniubarbati)

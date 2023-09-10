@@ -14,7 +14,12 @@ section {
     margin: 2em 0;
     z-index: 0;
 }
-
+@media screen and (max-width: 500px) {
+   section{
+    display: block;
+   }
+  
+}
 section .lista-start {
     width: 12%;
     padding-top: 1em;
@@ -22,6 +27,14 @@ section .lista-start {
     display: block;
     position: sticky;
     padding-left: 3%;
+}
+@media screen and (max-width:500px) {
+section .lista-start {
+        width: 100%;
+        height: auto;
+        position: relative;
+        display: flex;
+    }
 }
 .lista-start div{
     cursor: pointer;
@@ -36,7 +49,16 @@ section .header-lista-afisare-produse {
     height: auto;
     display: block;
     margin: 0 auto;
+    padding: .5em;
 }
+@media screen and (max-width:500px) {
+    section .header-lista-afisare-produse {
+            width: 100%;
+            display: block;
+            margin: 0 auto;
+        }
+}
+
 section .categorie-produs {
     width: 94%;
     display: flex;
@@ -79,7 +101,7 @@ section .categorie-produs .filtreaza-produsele .descriere-filtrare {
     position: relative;
     border: 1px solid #2b2b2b;
     padding: .3em;
-    width: 14vw;
+    width: auto;
     justify-content: space-between;
     border-radius: 4%;
     cursor: pointer;
@@ -94,7 +116,7 @@ section .categorie-produs .filtreaza-produsele .descriere-filtrare img {
 section .categorie-produs .filtreaza-produsele .continut-filtrare {
     display: none;
     box-shadow: 3px 12px 15px 12px rgba(0, 0, 0, .1);
-    width: 12vw;
+    width: auto;
     margin-top: .5em;
     position: absolute;
     z-index: 10;
@@ -175,9 +197,12 @@ section .afiseaza-produse {
     grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr));
     width: 95%;
     height: auto;
-
 }
-
+@media screen and (max-width: 500px) {
+    section .afiseaza-produse {
+            width: 100%;
+        }
+}
 section .afiseaza-produse .container-produs {
     display: block;
     position: relative;
@@ -312,7 +337,11 @@ section .preview-container-produs {
     padding: 1em;
     position: relative;
 }
-
+@media screen and (max-width: 500px) {
+    section .preview-container-produs {
+        height: 60%;
+    }
+}
 .preview-container-produs .inchide-preview {
     position: absolute;
     font-size: 3em;
@@ -330,7 +359,15 @@ section .preview-container-produs {
     max-width: 100%;
     max-height: 100%;
 }
-
+@media screen and (max-width: 500px) {
+    .preview-container-produs img {
+        max-width: 50%;
+            max-height: 50%;
+    }
+    .preview-container-produs .imagine-produs{
+        text-align: center;
+    }
+}
 .preview-container-produs .descriere-preview {
     margin-left: 1em;
     display: grid;
