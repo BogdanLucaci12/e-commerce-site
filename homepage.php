@@ -408,6 +408,17 @@ WHERE p.gender_id = '3'";
           <h4>Abonează-te la newsletter pentru a primii oferte si promoții</h4>
         </div>
         <div>
+          <?php
+          if (isset($_GET['info']) && $_GET['info'] == 'exista') {
+             echo "<script>alert('Te-ai abonat deja')</script>";
+          }
+          else if (isset($_GET['info']) && $_GET['info'] == 'succes') {
+             echo "<script>alert('Un email de confirmare ti-a fost trimis')</script>";
+          } else if (isset($_GET['info']) && $_GET['info'] == 'gender') {
+            echo "<script>alert('Nu ai selectat genul')</script>";
+          }
+
+          ?>
           <form action="automail.php" method="post">
             <div class="checkbox">
               <div>
@@ -490,9 +501,9 @@ WHERE p.gender_id = '3'";
   <script src="scriptsectiunea1.js"></script>
   <script src="scriptfooter.js"></script>
   <script src="search.js"></script>
-  <script src="scriptMeniuSendToProduse.js"></script>
   <script src="addtocart.js"></script>
   <script src="searchbrand.js"></script>
+  <script src="automail.php"></script>
 </body>
 
 </html>

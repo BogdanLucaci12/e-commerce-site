@@ -4,39 +4,40 @@ let resultBar = document.querySelector(".result-bar");
 text.addEventListener("input", () => {
     getData(text.value);
 });
-const getData = (textValue) => {
-    if (textValue.trim() == "" ) {
+const getData = (textValue2) => {
+    if (textValue2.trim() == "" ) {
         resultBar.style.display = "none";
         closeResultBar()
+       
     }
     else {
         resultBar.style.display = "block";
         let form = new FormData();
-        form.append('text', textValue);
+        form.append('text', textValue2);
         let ajax = new XMLHttpRequest();
         ajax.addEventListener("readystatechange", e => {
             if (ajax.readyState == 4 && ajax.status == 200) {
                 //result are back
-                handleResult(ajax.responseText);
+                handleResult2(ajax.responseText);
             }
         })
         ajax.open('post', 'search.php', true);
         ajax.send(form);
     }
 }
-function handleResult(result) {
-    // console.log(result);
-    let obj = JSON.parse(result);
-    let str = "";
+function handleResult2(result2) {
+   
+    let obj2 = JSON.parse(result2);
+    let str2 = "";
     let containerAfisareProdus = document.querySelector(".container-afisare-result");
-    obj.forEach(item => {
-        let containerProdus = returnareContainer(item[0], item[7], item[2], item[6], item[5]);
-        str += containerProdus;
+    obj2.forEach(item => {
+        let containerProdus = returnareContainer2(item[0], item[7], item[2], item[6], item[5]);
+        str2 += containerProdus;
     });
-    containerAfisareProdus.innerHTML = str;
+    containerAfisareProdus.innerHTML = str2;
     getProductid()
 }
-function returnareContainer(id, imagine, brand, descriere, pret) {
+function returnareContainer2(id, imagine, brand, descriere, pret) {
     return `
           <div class="rezultat" data-result-id=${id}>
           <div class="result-img"><img src="${imagine}""></div>
